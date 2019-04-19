@@ -1,0 +1,62 @@
+D:\VisualB_2016\ProjetoGIS\GIS\GISHelpers\bin\Debug\GISHelpers.dll
+D:\VisualB_2016\ProjetoGIS\GIS\GISHelpers\bin\Debug\GISHelpers.pdb
+D:\VisualB_2016\ProjetoGIS\GIS\GISHelpers\bin\Debug\Ionic.Zip.dll
+D:\VisualB_2016\ProjetoGIS\GIS\GISHelpers\obj\Debug\GISHelpers.dll
+D:\VisualB_2016\ProjetoGIS\GIS\GISHelpers\obj\Debug\GISHelpers.pdb
+H:\Visual217\ProjetoGis\GISHelpers\bin\Debug\GISHelpers.dll
+H:\Visual217\ProjetoGis\GISHelpers\bin\Debug\GISHelpers.pdb
+H:\Visual217\ProjetoGis\GISHelpers\bin\Debug\Ionic.Zip.dll
+H:\Visual217\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.csprojResolveAssemblyReference.cache
+H:\Visual217\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.dll
+H:\Visual217\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.pdb
+G:\BackupVisual\Visual217_01\ProjetoGis\GISHelpers\bin\Debug\GISHelpers.dll
+G:\BackupVisual\Visual217_01\ProjetoGis\GISHelpers\bin\Debug\GISHelpers.pdb
+G:\BackupVisual\Visual217_01\ProjetoGis\GISHelpers\bin\Debug\Ionic.Zip.dll
+G:\BackupVisual\Visual217_01\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.csprojResolveAssemblyReference.cache
+G:\BackupVisual\Visual217_01\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.dll
+G:\BackupVisual\Visual217_01\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.pdb
+D:\Users\c056232\Desktop\ProjetoGis\GISHelpers\bin\Debug\GISHelpers.dll
+D:\Users\c056232\Desktop\ProjetoGis\GISHelpers\bin\Debug\GISHelpers.pdb
+D:\Users\c056232\Desktop\ProjetoGis\GISHelpers\bin\Debug\Ionic.Zip.dll
+D:\Users\c056232\Desktop\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+D:\Users\c056232\Desktop\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.dll
+D:\Users\c056232\Desktop\ProjetoGis\GISHelpers\obj\Debug\GISHelpers.pdb
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
+D:\Users\c056232\Desktop\SESMTTecnologico\SESTEC\GISHelpers\obj\Debug\GISHelpers.csprojResolveAssemblyReference.cache
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\obj\Debug\GISHelpers.csprojAssemblyReference.cache
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+C:\Users\Tonic\OneDrive\Área de Trabalho\ProjetosGIS\SesmtTecnologico02\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csprojAssemblyReference.cache
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+C:\Users\Tonic\OneDrive\Documentos\GiHub\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
+C:\Users\johnn\Dropbox\SESMT\AWS\4\Git\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csprojAssemblyReference.cache
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csprojAssemblyReference.cache
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb

@@ -1,0 +1,147 @@
+﻿@model GISModel.Entidades.Atividade
+@{
+    ViewBag.Title = "Cadastro de Atividades por Função";
+}
+
+<div id="formCadFuncao">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 widget-container-col ui-sortable">
+            <div class="page-header">
+                <h1>
+                    Cadastro de Atividade por Função                     
+                </br>        
+                    </h1>
+                <h3>
+                    Diretoria: &nbsp;@ViewBag.NomeDiretoria
+                    </br>
+                    Função: &nbsp;@ViewBag.NomeFuncao
+                </h3>                                     
+                         
+            </div>
+        </div>
+    </div>
+
+    @using (Ajax.BeginForm("Cadastrar", "Atividade", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccessCadastrarAtividade", }, new { @id = "formCadastroAtividade", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="row">
+        
+        <div class="col-xs-12 col-sm-12">
+            <div class="form-group">
+                @Html.LabelFor(d => d.Descricao, new { @class = "form-field-select-3 col-xs-12 col-sm-6 no-padding-right" })
+                <div class="col-xs-12 col-sm-12">
+                    @Html.EditorFor(d => d.Descricao, new { htmlAttributes = new { @class = "col-xs-12 col-sm-12", @id = "" } })
+                    @Html.ValidationMessageFor(d => d.Descricao, string.Empty, new { @style = "font-size: 10px; color: #a94442;" })
+                    <input type="text" name="AtivId" id="AtivId" value=@ViewBag.AtivId hidden />
+                    <input type="text" name="idDiretoria" id="idDiretoria" value=@ViewBag.Diretoria hidden />
+                </div>
+            </div>
+        </div>
+    </div>
+        if (ViewBag.AtividadeTotal > 0)
+        {
+            <i class="material-icons" style="font-size:18px;color:green">Esta Função possui atividades cadastradas.</i>
+            <br />
+            
+            foreach (var item in ViewBag.FuncaoCargo)
+            {
+                @*<i class="material-icons" style="font-size:18px;color:red">Função:</i>@item.Funcao.NomeDaFuncao*@
+                <tr id="linha-@item.Funcao.IdCargo">
+
+                    <td class="center"></td>
+                    
+                    
+                    <li><td>@item.Descricao</td></li>
+
+                </tr>
+
+            }
+            <br /><br />
+            <i class="material-icons" style="font-size:18px;color:green">Perigos existentes para esta Atividade </i><br />
+            @*foreach (var item in ViewBag.TiposDeRiscos)
+            {
+
+                <tr id="linha-@item.IDTipoDeRisco">
+
+
+                    <br />
+                    <td>@item.DescricaoDoRisco</td>
+
+                </tr>
+
+            }*@
+
+
+        }
+        else
+        {
+            foreach (var item01 in ViewBag.Atividade)
+            {
+                <i class="fa fa-arrows-alt" style="font-size:18px"><i class="material-icons" style="font-size:18px;color:red">Função:</i>@item01.NomeDaFuncao</i>
+                <br />
+
+                <i class="material-icons" style="font-size:18px;color:red">Função sem Atividade</i>
+
+            }
+
+        }
+
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 align-center">
+                <button class="btn btn-info" id="btnSalvar" type="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Salvar
+                </button>
+                &nbsp;
+                <button class="btn btn-warning" type="reset">
+                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                    Limpar
+                </button>
+                &nbsp;
+                <a class="btn" href="javascript:history.back()">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Voltar
+                </a>
+            </div>
+        </div>
+    }
+
+
+</div> <!-- Fim FormQuery -->
+
+
+@section Scripts {
+   
+<script src="~/Scripts/Custom/Atidade/Novo.js"></script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

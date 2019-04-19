@@ -1,0 +1,152 @@
+﻿<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <script type="text/javascript">
+        try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        @if (ViewBag.OcultarMenus == null || !ViewBag.OcultarMenus)
+        {
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        }
+
+        <div class="navbar-header pull-left align-center">
+            <a href="#" class="navbar-brand EmConstrucao">
+                <small>
+                    @*<img src="~/Content/Images/Gedoc20_branco_150px_25px.png" />*@
+                    @if (Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["AD:DMZ"]))
+                    {
+                        @*<a href="http://www.tecsesmt.com.br" target="_blank">
+                            <img src="~/Content/Images/cemig_100px.png" style="width: 75%" />
+                        </a>*@
+                    }
+                    else
+                    {
+                        @*<a href="http://cemignet20/" target="_blank">
+                            <img src="~/Content/Images/cemig_100px.png" style="width: 75%" />
+                        </a>*@
+                    }
+                    <span class="white">SESMT-TECNOLÓGICO</span>
+                </small>
+            </a>
+        </div>
+
+        @if (ViewBag.OcultarMenus == null || !ViewBag.OcultarMenus)
+        {
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+
+                    @*<li class="green btnReqEmp" title="Requisição de Empréstimo" style="display: none;">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-file-text-o"></i>
+                            <span class="badge badge-success qtdItensReqEmp"></span>
+                        </a>
+
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-download"></i>
+                                <span class="qtdItensReqEmpLabel"></span>
+                            </li>
+
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar ulReqEmp"></ul>
+                            </li>
+
+                            <li class="dropdown-footer">
+                                <a href="#" onclick="FinalizarReqEmp();">
+                                    Finalizar Requisição Empréstimo
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+                    @*<li class="green" style="display: none;">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-print"></i>
+                            <span class="badge badge-success qtdItensReqCopia"></span>
+                        </a>
+
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-download"></i>
+                                <span class="qtdItensReqCopiaLabel"></span>
+                            </li>
+
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar ulReqCopia"></ul>
+                            </li>
+
+                            <li class="dropdown-footer">
+                                <a href="@Url.Action("Index", "FinalizarPedido")">
+                                    Finalizar Requisição de Cópia
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            @if (string.IsNullOrWhiteSpace(ViewBag.NomeUsuario))
+                            {
+                                <img class="nav-user-photo" src="@Url.Action("FotoPerfil", "Account")" />
+                            }
+                            else
+                            {
+                                <img class="nav-user-photo" src="@Url.Action("FotoPerfil", "Account", new { login = ViewBag.MatriculaUsuario })" />
+                            }
+                            <span class="user-info">
+                                <small>Bem vindo,</small>
+                                <small style="font-weight: bold;">
+                                    @if (string.IsNullOrWhiteSpace(ViewBag.NomeUsuario))
+                                    {
+                                        <span>Anônimo</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@ViewBag.NomeUsuario</span>
+                                    }
+                                </small>
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="@Url.Action("Perfil", "Account")">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Meus Dados
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="@Url.Action("Sobre", "Home")">
+                                    <i class="ace-icon fa fa-hashtag"></i>
+                                    Sobre...
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#" data-target="#modalLogoff" data-toggle="modal">
+                                    <i class="ace-icon fa fa-power-off" style="font-size: 18px"></i>
+                                    Fazer logoff...
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+
+
