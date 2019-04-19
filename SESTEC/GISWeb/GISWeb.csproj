@@ -549,6 +549,7 @@
     <Content Include="Views\DocumentosPessoal\Index.cshtml" />
     <Content Include="Views\DocumentosPessoal\Novo.cshtml" />
     <Content Include="Views\DocsPorAtividade\Index.cshtml" />
+    <Content Include="Views\DocsPorAtividade\Novo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

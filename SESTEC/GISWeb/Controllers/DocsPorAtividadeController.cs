@@ -45,31 +45,37 @@ namespace GISWeb.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.Atividade = DocsPorAtividadeBusiness.Consulta.Where(d => string.IsNullOrEmpty(d.UsuarioExclusao)).ToList();
+            ViewBag.Atividade = AtividadeBusiness.Consulta.Where(d => string.IsNullOrEmpty(d.UsuarioExclusao)).ToList();
 
             return View();
         }
 
-        public ActionResult Novo()
+        public ActionResult Novo(string id)
         {
+
+
+            ViewBag.Documentos = new SelectList(DocumentosPessoalBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDDocumentosEmpregado", "NomeDocumento");
+           
+            ViewBag.IDAtividade = AtividadeBusiness.Consulta.Where(d => string.IsNullOrEmpty(d.UsuarioExclusao)&&(d.IDAtividade.Equals(id))).ToList(); ;
+            ViewBag.idAtiv = id;
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(DocumentosPessoal oDocumento)
+        public ActionResult Cadastrar(DocsPorAtividade oDocAtividade, string idAtiv)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    oDocAtividade.idAtividade = idAtiv;
+                    DocsPorAtividadeBusiness.Inserir(oDocAtividade);
 
-                    DocumentosPessoalBusiness.Inserir(oDocumento);
+                    TempData["MensagemSucesso"] = "O Documento foi cadastrado com sucesso.";
 
-                    TempData["MensagemSucesso"] = "O Documento '" + oDocumento.NomeDocumento + "' foi cadastrado com sucesso.";
-
-                    return Json(new { resultado = new RetornoJSON() { URL = Url.Action("Index", "DocumentosPessoal") } });
+                    return Json(new { resultado = new RetornoJSON() { URL = Url.Action("Index", "DocsPorAtividade") } });
                 }
                 catch (Exception ex)
                 {

@@ -1,15 +1,10 @@
 ﻿
-jQuery(function ($) {
-
-    alert("a00");
-
-});
 
 
-function OnSuccessCadastrarDocumento(data) {
+function OnSuccessCadastrarDocsPorAtividade(data) {
 
-    alert("A");
-    $('#formCadastroDocumento').removeAttr('style');
+   
+    $('#formCadastroDocsPorAtividade').removeAttr('style');
     $(".LoadingLayout").hide();
     $('#btnSalvar').show();
     TratarResultadoJSON(data.resultado);
@@ -18,9 +13,9 @@ function OnSuccessCadastrarDocumento(data) {
 
 
 
-function OnBeginCadastrarDocumento() {
-    alert("B");
+function OnBeginCadastrarDocsPorAtividade() {
+    
     $(".LoadingLayout").show();
     $('#blnSalvar').hide();
-    $("#formCadastroDocumento").css({ opacity: "0.5" });
+    $("#formCadastroDocsPorAtividade").css({ opacity: "0.5" });
 }

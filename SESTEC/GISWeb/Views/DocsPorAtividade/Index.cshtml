@@ -36,7 +36,7 @@
                     <thead>
                         <tr>
                             <th width="50px"></th>
-                            <th>Documentos</th>
+                            <th>Atividade</th>                           
                             <th width="90px"></th>
 
                         </tr>
@@ -44,10 +44,10 @@
 
                     <tbody>
 
-                        @foreach (DocsPorAtividade item in ViewBag.Atividade)
+                        @foreach (Atividade item in ViewBag.Atividade)
                         {
 
-                            <tr id="linha-@item.IDDocAtividade">
+                            <tr id="linha-@item.IDAtividade">
 
                                 <td class="center">
                                     <label class="pos-rel">
@@ -55,15 +55,20 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </td>
-                                <td>@item.Atividade.Descricao</td>
-
+                                <td>@item.Descricao</td>                                
                                 <td>
                                     <div class="hidden-sm hidden-xs action-buttons">
 
-                                        <a class="red" href="#" onclick="DeletarDocumento('@item.IDDocAtividade','@item.Atividade.Descricao');">
+                                        <a href='@Url.Action("Novo", "DocsPorAtividade", new { id = @item.IDAtividade})' class="tooltip-success" data-rel="tooltip" title="Edit">
+                                            <span class="green">
+                                                <i class="fa fa-plus-square bigger-130" aria-hidden="true" title="Cadastrar Documento"></i>
+                                            </span>
+                                        </a>
+
+                                        <a class="red" href="#" onclick="DeletarDocumento('@item.IDAtividade','@item.Descricao');">
                                             <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                         </a>
-                                        <a href='@Url.Action("Edicao", "DocumentosPessoal", new { id = @item.IDDocAtividade})' class="tooltip-success" data-rel="tooltip" title="Edit">
+                                        <a href='@Url.Action("Edicao", "DocumentosPessoal", new { id = @item.IDAtividade})' class="tooltip-success" data-rel="tooltip" title="Edit">
                                             <span class="green">
                                                 <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                             </span>
@@ -78,14 +83,14 @@
                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 
                                                 <li>
-                                                    <a href='@Url.Action("Edicao", "DocumentosPessoal", new { id = @item.IDDocAtividade})' class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                    <a href='@Url.Action("Edicao", "DocumentosPessoal", new { id = @item.IDAtividade})' class="tooltip-success" data-rel="tooltip" title="Edit">
                                                         <span class="green">
                                                             <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
                                                         </span>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" class="tooltip-error" onclick="DeletarDocumento('@item.IDDocAtividade');" data-rel="tooltip" title="Delete">
+                                                    <a href="#" class="tooltip-error" onclick="DeletarDocumento('@item.IDAtividade');" data-rel="tooltip" title="Delete">
                                                         <span class="red">
                                                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                                         </span>
@@ -111,12 +116,20 @@
     </div>
 </div>
 
+
+
+
+
+
+
+
 @section Scripts{
 
     @Scripts.Render("~/bundles/jQ_dataTable")
 
-    <script src="~/Scripts/Custom/DocumentosPessoal/Lista.js"></script>
-    <script src="~/Scripts/Custom/DocumentosPessoal/Edicao.js"></script>
-    <script src="~/Scripts/Custom/DocumentosPessoal/Excluir.js"></script>
+
+    <script src="~/Scripts/Custom/DocsPorAtividade/Lista.js"></script>
+
+
 
 }
