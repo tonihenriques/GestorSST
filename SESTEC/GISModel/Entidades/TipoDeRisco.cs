@@ -26,6 +26,9 @@ namespace GISModel.Entidades
         [Display(Name = "Atividade do Estabelecimento")]
         public string idAtividadesDoEstabelecimento { get; set; }
 
+        [Display(Name ="Atividade da Função")]
+        public string idAtividade { get; set; }
+
         [Display(Name ="Classifique o Risco")]
         public EClasseDoRisco EClasseDoRisco { get; set; }
 
@@ -45,6 +48,8 @@ namespace GISModel.Entidades
         public virtual PerigoPotencial PerigoPotencial { get; set; }
 
         public virtual AtividadesDoEstabelecimento AtividadesDoEstabelecimento {get; set;}
+
+        public virtual Atividade Atividade { get; set; }
 
         //public virtual ICollection<AtividadesDoEstabelecimento> AtividadesDoEstabelecimento { get; set; }
 

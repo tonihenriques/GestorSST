@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Abstract\IAnaliseRiscoBusiness.cs" />
+    <Compile Include="Business\Abstract\IAtividadeFuncaoLiberadaBusiness.cs" />
     <Compile Include="Business\Abstract\IDocsPorAtividadeBusiness.cs" />
     <Compile Include="Business\Abstract\IDocumentosPessoalBusiness .cs" />
     <Compile Include="Business\Abstract\IPerigoPotencialBusiness.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Business\Abstract\ITipoDeRiscoBusiness.cs" />
     <Compile Include="Business\Abstract\IUsuarioBusiness.cs" />
     <Compile Include="Business\Concrete\AnaliseRiscoBusiness.cs" />
+    <Compile Include="Business\Concrete\AtividadeFuncaoLiberadaBusiness.cs" />
     <Compile Include="Business\Concrete\DocsPorAtividadeBusiness.cs" />
     <Compile Include="Business\Concrete\DocumentosPessoalBusiness .cs" />
     <Compile Include="Business\Concrete\PerigoPotencialBusiness.cs" />
@@ -129,6 +131,14 @@
     <Compile Include="Migrations\201904191053081_v02.cs" />
     <Compile Include="Migrations\201904191053081_v02.Designer.cs">
       <DependentUpon>201904191053081_v02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905041632094_v_03.cs" />
+    <Compile Include="Migrations\201905041632094_v_03.Designer.cs">
+      <DependentUpon>201905041632094_v_03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905051443314_v05.cs" />
+    <Compile Include="Migrations\201905051443314_v05.Designer.cs">
+      <DependentUpon>201905051443314_v05.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904191053081_v02.resx">
       <DependentUpon>201904191053081_v02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041632094_v_03.resx">
+      <DependentUpon>201905041632094_v_03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905051443314_v05.resx">
+      <DependentUpon>201905051443314_v05.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

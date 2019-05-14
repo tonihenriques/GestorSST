@@ -260,6 +260,9 @@
     <Content Include="Scripts\Custom\AtividadeAlocada\Edicao.js" />
     <Content Include="Scripts\Custom\AtividadeAlocada\Listagem.js" />
     <Content Include="Scripts\Custom\AtividadeAlocada\Novo.js" />
+    <Content Include="Scripts\Custom\AtividadeFuncaoLiberada\Edicao.js" />
+    <Content Include="Scripts\Custom\AtividadeFuncaoLiberada\Listagem.js" />
+    <Content Include="Scripts\Custom\AtividadeFuncaoLiberada\Novo.js" />
     <Content Include="Scripts\Custom\AtividadeRiscos\Edicao.js" />
     <Content Include="Scripts\Custom\AtividadeRiscos\Excluir.js" />
     <Content Include="Scripts\Custom\AtividadeRiscos\Listagem.js" />
@@ -375,6 +378,7 @@
     <Compile Include="Controllers\AnaliseRiscoController.cs" />
     <Compile Include="Controllers\AtividadeAlocadaController.cs" />
     <Compile Include="Controllers\AtividadeController.cs" />
+    <Compile Include="Controllers\AtividadeFuncaoLiberadaController.cs" />
     <Compile Include="Controllers\AtividadesDoEstabelecimentoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DiretoriaController.cs" />
@@ -550,6 +554,13 @@
     <Content Include="Views\DocumentosPessoal\Novo.cshtml" />
     <Content Include="Views\DocsPorAtividade\Index.cshtml" />
     <Content Include="Views\DocsPorAtividade\Novo.cshtml" />
+    <Content Include="Views\DocsPorAtividade\_ListaDocumentos.cshtml" />
+    <Content Include="Views\Atividade\_NovosRiscos.cshtml" />
+    <Content Include="Views\TipoDeRisco\_NovosRiscos.cshtml" />
+    <Content Include="Views\TipoDeRisco\NovoRisco.cshtml" />
+    <Content Include="Views\MedidasDeControle\NovoControleRiscoFuncao.cshtml" />
+    <Content Include="Views\Atividade\_Upload.cshtml" />
+    <Content Include="Views\Atividade\_AlocarAtivFuncao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -562,12 +573,14 @@
     <Folder Include="Content\Custom\" />
     <Folder Include="Images\AdmissaoImagens\" />
     <Folder Include="Images\AtividadesEstabelecimentoImagens\" />
+    <Folder Include="Images\AtividadesImagens\" />
     <Folder Include="Images\Empregado\" />
     <Folder Include="Images\Empresas\" />
     <Folder Include="Images\EstabelecimentoImagens\" />
     <Folder Include="Images\MedidasDeControle\" />
     <Folder Include="Images\Relatorios\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AtividadeFuncaoLiberada\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

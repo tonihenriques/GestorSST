@@ -305,6 +305,49 @@ function AlocarEmAmbiente(idEstabelecimento, idAlocacao) {
 };
 
 
+function AlocarAtivFuncao(IDFuncao, IDEmpregado) {
+
+
+    $(".LoadingLayout").show();
+    //$('tablePerfisPorMenu').css({ opacity: "0.5" });
+    $.ajax({
+        method: "POST",
+        url: "/Atividade/AlocarAtivFuncao",
+        data: { IDFuncao: IDFuncao, IDEmpregado: IDEmpregado },
+        error: function (erro) {
+            $(".LoadingLayout").hide();
+            ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')
+        },
+        success: function (content) {
+
+
+            $(".LoadingLayout").hide();
+            //$("tablePerfisPorMenu").css({ opacity: '' });
+            if (content.data != null) {
+                bootbox.dialog({
+                    message: content.data,
+                    title: "<span class='bigger-110'>Selecione as Atividades para esta Função</span>",
+                    backdrop: true,
+                    locale: "br",
+                    buttons: {},
+                    onEscape: true
+                });
+            }
+            else {
+                TratarResultadoJSON(content.resultado);
+            }
+
+            AplicajQdataTable("tablePerfisPorMenu", [{ "bSortable": false }, null], false, 25);
+
+        }
+
+
+    });
+
+};
+
+
+
 function PesquisarAtividadesRiscos(idEstabelecimento, idAlocacao) {
 
 

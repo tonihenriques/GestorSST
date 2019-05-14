@@ -137,6 +137,62 @@ namespace GISWeb.Controllers
         }
 
 
+        public ActionResult ListaDocumentos(string IDAtividade)
+        {
+            ViewBag.Ativ = AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDAtividade.Equals(IDAtividade))).ToList();
+
+            ViewBag.Docs = from c in DocsPorAtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                           join b in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                           on c.idAtividade equals b.IDAtividade
+                           join a in DocumentosPessoalBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                           on c.idDocumentosEmpregado equals a.IDDocumentosEmpregado
+                           where c.idAtividade.Equals(IDAtividade)
+                           select new DocsPorAtividade()
+                           {
+                               Atividade =new Atividade
+                               {
+                                   Descricao = b.Descricao
+                               },
+
+                               DocumentosEmpregado = new DocumentosPessoal
+                               {
+                                   NomeDocumento = a.NomeDocumento
+                               }
+
+                           };
+
+
+
+            try
+            {
+                DocsPorAtividade oExposicao = DocsPorAtividadeBusiness.Consulta.FirstOrDefault(p => p.idAtividade.Equals(IDAtividade));
+                               
+
+                if (oExposicao == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Alerta = "Documentos não encontrado. Solicite ao Administrador que vincule os documentos a Atividade!." } });
+                }
+                else
+                {
+                    return Json(new { data = RenderRazorViewToString("_ListaDocumentos", oExposicao) });
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                if (ex.GetBaseException() == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                }
+                else
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                }
+            }
+        }
+
+
         [HttpPost]
         public ActionResult TerminarComRedirect(string IDDocumentosEmpregado, string NomeDocumento)
         {

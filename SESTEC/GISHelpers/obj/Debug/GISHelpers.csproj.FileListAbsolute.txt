@@ -60,3 +60,11 @@ C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHel
 C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
 C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
 C:\Users\Antonio\Desktop\NovaGestao\GestaoSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csprojAssemblyReference.cache
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb

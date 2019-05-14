@@ -29,7 +29,7 @@
 
         $.ajax({
             method: "GET",
-            url: "/MedidaControleRiscoFuncao/_Upload",
+            url: "/EstabelecimentoAmbiente/_Upload",
             error: function (erro) {
                 $('#modalArquivo').modal('hide');
                 ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')
@@ -188,15 +188,15 @@ function InitDropZoneSingle() {
     }
 }
 
-function OnSuccessCadastrarMedidasDeControleRiscoFuncao(data) {
-    $('#formCadastroMedidasDeControleRiscoFuncao').removeAttr('style');
+function OnSuccessCadastrarControleRiscoFuncao(data) {
+    $('#formCadastrarControleRiscoFuncao').removeAttr('style');
     $(".LoadingLayout").hide();
     $('#btnSalvar').show();
     TratarResultadoJSON(data.resultado);
 }
 
-function OnBeginCadastrarMedidasDeControleRiscoFuncao() {
+function OnBeginCadastrarControleRiscoFuncao() {
     $(".LoadingLayout").show();
     $('#btnSalvar').hide();
-    $("#formCadastroMedidasDeControleRiscoFuncao").css({ opacity: "0.5" });
+    $("#formCadastrarControleRiscoFuncao").css({ opacity: "0.5" });
 }

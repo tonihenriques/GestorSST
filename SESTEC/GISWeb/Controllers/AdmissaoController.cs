@@ -96,7 +96,7 @@ namespace GISWeb.Controllers
 
         }
 
-        //passanda IDEmpregado como parametro para montar o perfil
+        //passando IDEmpregado como parametro para montar o perfil
         public ActionResult PerfilEmpregado(string id)
         {
             ViewBag.Perfil = AdmissaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDEmpregado.Equals(id))).ToList();
@@ -211,6 +211,10 @@ namespace GISWeb.Controllers
                                                         ).ToList();
 
             ViewBag.ListaAtividade = ListaAtividades;
+
+
+
+            //Criar consulta em nova classe AtividadeFuncaoLiberada
 
 
             //ViewBag.Alocaçao = AlocacaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.Admissao.IDEmpregado.Equals(id)) && (p.Ativado == "Ativado")).ToList();
@@ -712,7 +716,7 @@ namespace GISWeb.Controllers
             //id do Estabelecimento recebido por parametro
             ViewBag.EmpID = id;
             ViewBag.Sigla = new SelectList(DepartamentoBusiness.Consulta.ToList(), "IDDepartamento", "Sigla");
-            ViewBag.Empresas = new SelectList(EmpresaBusiness.Consulta.ToList(), "IDEmpresa", "NomeFantasia");
+            ViewBag.Empresas = new SelectList(EmpresaBusiness.Consulta.Where(p=> string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDEmpresa", "NomeFantasia");
             ViewBag.Admissao = AdmissaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDEmpregado.Equals(id))).ToList();
             ViewBag.Empregado = EmpregadoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDEmpregado.Equals(id))).ToList();
             //ViewBag.RegistroID = new SelectList(EstabelecimentoImagensBusiness.Consulta, "RegistroID", "Diretoria");

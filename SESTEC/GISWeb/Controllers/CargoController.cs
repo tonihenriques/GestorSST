@@ -16,6 +16,10 @@ namespace GISWeb.Controllers
         #region Inject
 
         [Inject]
+        public IEmpresaBusiness EmpresaBusiness { get; set; }
+
+
+        [Inject]
         public ITipoDeRiscoBusiness TipoDeRiscoBusiness { get; set; }
 
         [Inject]
@@ -36,10 +40,23 @@ namespace GISWeb.Controllers
 
         public ActionResult Novo()
         {
+            var Dir = from a in DiretoriaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                      join b in EmpresaBusiness.Consulta.ToList()
+                      on a.IDEmpresa equals b.IDEmpresa                      
+                      select new Diretoria()
+                      {
+                          IDDiretoria = a.IDDiretoria,
+                          Sigla = a.Sigla
+                      };
+
+           
 
 
-            ViewBag.Diretoria = new SelectList(DiretoriaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDDiretoria", "Sigla");
-                
+            ViewBag.Diretoria = new SelectList(Dir.Where(p=>string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDDiretoria", "Sigla");
+
+
+            // ViewBag.Diretoria = new SelectList(DiretoriaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDDiretoria", "Sigla");
+
             return View();
         }
 

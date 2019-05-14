@@ -106,6 +106,72 @@ namespace GISWeb.Controllers
 
         //}
 
+
+
+
+
+
+
+        public ActionResult NovoControleRiscoFuncao(string id, string idAtivRisco)
+        {
+
+            ViewBag.EstabID = id;
+            ViewBag.AtivRisco = idAtivRisco;
+            ViewBag.Imagens = MedidasDeControleBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDTipoDeRisco.Equals(id))).ToList();
+            ViewBag.TipoDeRisco = TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDTipoDeRisco.Equals(id))).ToList();
+            ViewBag.RegistroID = new SelectList(MedidasDeControleBusiness.Consulta, "RegistroID", "Diretoria");
+
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarControleRiscoFuncao(MedidasDeControleExistentes oMedidasDeControleExistentes, string RegistroID, string AtivRiscoID)
+        {
+
+            oMedidasDeControleExistentes.IDTipoDeRisco = RegistroID;
+            //oMedidasDeControleExistentes.IDAtividadeRiscos = AtivRiscoID;
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    MedidasDeControleBusiness.Inserir(oMedidasDeControleExistentes);
+
+                    TempData["MensagemSucesso"] = "A imagem '" + oMedidasDeControleExistentes.NomeDaImagem + "'foi cadastrada com sucesso.";
+
+
+                    return Json(new { resultado = new RetornoJSON() { URL = Url.Action("NovoControleRiscoFuncao", "MedidasDeControle", new { id = oMedidasDeControleExistentes.IDTipoDeRisco }) } });
+                }
+                catch (Exception ex)
+                {
+                    if (ex.GetBaseException() == null)
+                    {
+                        return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                    }
+                    else
+                    {
+                        return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                    }
+                }
+
+            }
+            else
+            {
+                return Json(new { resultado = TratarRetornoValidacaoToJSON() });
+            }
+        }
+
+
+
+
+
+
+
+
+
         public ActionResult Novo(string id, string idAtivRisco)
         {
 

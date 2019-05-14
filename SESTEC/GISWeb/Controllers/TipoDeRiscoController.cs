@@ -33,8 +33,8 @@ namespace GISWeb.Controllers
         [Inject]
         public IAtividadesDoEstabelecimentoBusiness AtividadesDoEstabelecimentoBusiness { get; set; }
 
-        //[Inject]
-        //public IAtividadeRiscosBusiness AtividadeRiscosBusiness { get; set; }
+        [Inject]
+        public IAtividadeBusiness AtividadeBusiness { get; set; }
 
         //[Inject]
         //public IMedidaControleRiscoFuncaoBusiness MedidaControleRiscoFuncaoBusiness { get; set; }
@@ -49,101 +49,9 @@ namespace GISWeb.Controllers
         }
 
 
-        //public ActionResult BuscarDetalhesDaAtividadeRisco(string idTipoDeRisco)
-        //{
-
-        //    List<MedidasControleRiscoFuncao> MedidaControle = (from a in MedidaControleRiscoFuncaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-        //                          join b in AtividadeRiscosBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-        //                          on a.IDAtividadeRiscos equals b.IDAtividadeRiscos
-        //                          join c in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-        //                          on b.IdTipoDeRisco equals c.IDTipoDeRisco
-        //                          join d in EventoPerigosoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-        //                          on c.idEventoPerigoso equals d.IDEventoPerigoso
-        //                          join e in PossiveisDanosBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-        //                          on c.idPossiveisDanos equals e.IDPossiveisDanos
-        //                          join f in EventoPerigosoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-        //                          on c.idEventoPerigoso equals f.IDEventoPerigoso
-        //                          where c.IDTipoDeRisco.Equals(idTipoDeRisco)
-        //                          //group c by c.IDTipoDeRisco into g
-        //                          select new MedidasControleRiscoFuncao()
-        //                          {
-        //                              IDMedidasDeControleRiscoFuncao = a.IDMedidasDeControleRiscoFuncao,
-        //                              ControleExistentes = a.ControleExistentes,
-        //                              EClassificacaoDaMedida = a.EClassificacaoDaMedida,
-        //                              NomeDaImagem = a.NomeDaImagem,
-        //                              Imagem = a.Imagem,
-
-        //                              AtividadeRiscos = new AtividadeRiscos()
-        //                              {
-        //                                  IdTipoDeRisco =b.IdTipoDeRisco,
-                                          
-
-        //                                  TipoDeRisco = new TipoDeRisco()
-        //                                  {
-        //                                      IDTipoDeRisco = c.IDTipoDeRisco,
-        //                                      DescricaoDoRisco = c.DescricaoDoRisco,
-
-        //                                      EventoPerigoso = new EventoPerigoso()
-        //                                      {
-        //                                          IDEventoPerigoso =f.IDEventoPerigoso,
-        //                                          Descricao = f.Descricao
-        //                                      },
-        //                                      PossiveisDanos = new PossiveisDanos()
-        //                                      {
-        //                                          IDPossiveisDanos =e.IDPossiveisDanos,
-        //                                          DescricaoDanos = e.DescricaoDanos
-        //                                      }
-
-        //                                  }
-
-        //                              }
 
 
-
-                                      
-        //                          }
-
-
-        //         ).ToList();
-
-            
-        //    ViewBag.TipoDeRisco = MedidaControle;
-
-            
-
-            //try
-            //{
-            //    TipoDeRisco oIDTipoDeRisco = TipoDeRiscoBusiness.Consulta.FirstOrDefault(p => p.IDTipoDeRisco.Equals(idTipoDeRisco));
-            //    if (oIDTipoDeRisco == null)
-            //    {
-            //        return Json(new { resultado = new RetornoJSON() { Alerta = "Imagens não encontrada." } });
-            //    }
-            //    else
-            //    {
-            //        return Json(new { data = RenderRazorViewToString("_Detalhes", oIDTipoDeRisco) });
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (ex.GetBaseException() == null)
-            //    {
-            //        return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
-            //    }
-            //    else
-            //    {
-            //        return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
-            //    }
-            //}
-
-
-
-
-
-       // }
-        
-
-
-
+        //parametros(IDAtividadesDoEstabelecimento,Nome do Estabelecimento,IDAtividade)
         public ActionResult Novo(string id, string Nome, string Ativida)
         {
             ViewBag.EventoPerigoso = new SelectList(EventoPerigosoBusiness.Consulta.ToList(), "IDEventoPerigoso", "Descricao");
@@ -200,6 +108,185 @@ namespace GISWeb.Controllers
 
             return View();
         }
+
+
+        //parametro(IDAtividade)
+        public ActionResult NovoRisco(string idAtividade, string Descricao, string AtivId, string NomeFuncao, string Diretoria, string NomeDiretoria)
+        {
+            ViewBag.EventoPerigoso = new SelectList(EventoPerigosoBusiness.Consulta.Where(p=>string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDEventoPerigoso", "Descricao");
+            ViewBag.PossiveisDanos = new SelectList(PossiveisDanosBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDPossiveisDanos", "DescricaoDanos");
+            ViewBag.EventPeriPotencial = new SelectList(PerigoPotencialBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDPerigoPotencial", "DescricaoEvento");
+            ViewBag.AtivEstabelecimento = new SelectList(AtividadesDoEstabelecimentoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDAtividadesDoEstabelecimento", "DescricaoDestaAtividade");
+            ViewBag.Descricao = Descricao;
+            ViewBag.Nome = NomeFuncao;
+            ViewBag.Ativiade = idAtividade;
+            ViewBag.AtivId = AtivId;
+            ViewBag.Diretoria = Diretoria;
+            ViewBag.NomeDiretoria = NomeDiretoria;
+            TempData["Funcao"] = NomeFuncao;
+
+
+
+
+            List<TipoDeRisco> Riscos = (from Tip in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                        join AT in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                        on Tip.idAtividade equals AT.IDAtividade
+                                        join PD in PossiveisDanosBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                        on Tip.idPossiveisDanos equals PD.IDPossiveisDanos
+                                        join PP in PerigoPotencialBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                        on Tip.idPerigoPotencial equals PP.IDPerigoPotencial
+                                        join EP in EventoPerigosoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                        on Tip.idEventoPerigoso equals EP.IDEventoPerigoso
+                                        where AT.IDAtividade.Equals(idAtividade)
+                                        select new TipoDeRisco()
+                                        {
+                                            IDTipoDeRisco = Tip.IDTipoDeRisco,
+                                            EClasseDoRisco = Tip.EClasseDoRisco,
+                                            FonteGeradora = Tip.FonteGeradora,
+                                            Tragetoria = Tip.Tragetoria,
+                                            PossiveisDanos = new PossiveisDanos()
+                                            {
+                                                DescricaoDanos = PD.DescricaoDanos,
+
+                                            },
+                                            PerigoPotencial = new PerigoPotencial()
+                                            {
+                                                DescricaoEvento = PP.DescricaoEvento,
+                                            },
+                                            EventoPerigoso = new EventoPerigoso()
+                                            {
+                                                Descricao = EP.Descricao,
+                                            },
+                                            Atividade = new Atividade()
+                                            {
+                                                
+                                                IDAtividade = AT.IDAtividade,
+                                                Descricao =AT.Descricao
+                                            }
+
+
+
+                                        }
+
+
+                                        ).ToList();
+
+            ViewBag.DescricaoRiscos = Riscos;
+
+
+            var AtividadeList =  AtividadeBusiness.Consulta.FirstOrDefault(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDAtividade.Equals(idAtividade)));
+
+            ViewBag.ListaAtividade = AtividadeList;
+
+
+            try
+            {
+
+                //var oTipoR = from c in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                //                        select new TipoDeRisco() {
+                //                            IDTipoDeRisco = c.IDTipoDeRisco,
+                //                            Tragetoria = c.Tragetoria,
+                //                            FonteGeradora = c.FonteGeradora,
+
+                //                            PossiveisDanos = new PossiveisDanos()
+                //                            {
+                //                                DescricaoDanos = c.PossiveisDanos.DescricaoDanos
+
+                //                            },
+                //                            PerigoPotencial = new PerigoPotencial()
+                //                            {
+                //                                DescricaoEvento = c.PerigoPotencial.DescricaoEvento
+                //                            },
+                //                            EventoPerigoso = new EventoPerigoso()
+                //                            {
+                //                                Descricao = c.EventoPerigoso.Descricao
+                //                            }
+
+                //                        };
+
+                TipoDeRisco oTipoRiscos = new TipoDeRisco();
+
+                //TipoDeRisco oTipoRiscos = TipoDeRiscoBusiness.Consulta.FirstOrDefault(p => string.IsNullOrEmpty(p.UsuarioExclusao));
+
+
+                //Atividade oIDAtividade = AtividadeBusiness.Consulta.FirstOrDefault(p => p.IDAtividade.Equals(idAtividade));
+
+
+                //var oIDRiscosDoEstabelecimento = ViewBag.Imagens;
+
+                if (oTipoRiscos == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Alerta = "Tipos não encontrado." } });
+                }
+                else
+                {
+                    return Json(new { data = RenderRazorViewToString("_NovosRiscos", oTipoRiscos) });
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.GetBaseException() == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                }
+                else
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                }
+            }
+
+        }
+
+        //Começa a quebrar a partir daqui - nome da função chega quebrado aqui
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarNovoRisco(TipoDeRisco oTipoDeRisco, string idAtividade, string Nome, string AtivId, string NomeFuncao, string Diretoria, string NomeDiretoria)
+        {
+
+            
+            
+
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    AtividadesDoEstabelecimento oAtividadesDoEstabelecimento = AtividadesDoEstabelecimentoBusiness.Consulta.FirstOrDefault(p => p.IDAtividadesDoEstabelecimento.Equals(idAtividade));
+
+                    oTipoDeRisco.idAtividade = idAtividade;
+                    TipoDeRiscoBusiness.Inserir(oTipoDeRisco);
+
+                   
+
+
+
+                    TempData["MensagemSucesso"] = "O Risco foi cadastrado com sucesso!";
+                    //id funçao, nome da funçao, id da Diretoria, nome da diretoria
+                    return Json(new { resultado = new RetornoJSON() { URL = Url.Action("Novo", "Atividade", new { id= AtivId, nome= NomeFuncao, idDiretoria= Diretoria, nomeDiretoria= NomeDiretoria }) } });
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex.GetBaseException() == null)
+                    {
+                        return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                    }
+                    else
+                    {
+                        return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                    }
+                }
+
+            }
+            else
+            {
+                return Json(new { resultado = TratarRetornoValidacaoToJSON() });
+
+            }
+        }
+
+
+        
 
 
 

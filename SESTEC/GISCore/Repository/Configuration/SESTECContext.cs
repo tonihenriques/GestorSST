@@ -10,7 +10,10 @@ namespace GISCore.Repository.Configuration
         {
             Database.SetInitializer<SESTECContext>(null);
         }
-        
+
+
+        public DbSet<AtividadeFuncaoLiberada> AtividadeFuncaoLiberada { get; set; }
+
         public DbSet<DocAtividade> DocAtividade { get; set; }
 
         public DbSet<DocsPorAtividade> DocsPorAtividade { get; set; }

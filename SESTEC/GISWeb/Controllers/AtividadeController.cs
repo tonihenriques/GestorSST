@@ -1,5 +1,6 @@
 ﻿using GISCore.Business.Abstract;
 using GISCore.Business.Concrete;
+using GISModel.DTO.AtividadeAlocadaFuncao;
 using GISModel.DTO.Shared;
 using GISModel.Entidades;
 using GISWeb.Infraestrutura.Filters;
@@ -18,6 +19,9 @@ namespace GISWeb.Controllers
 
         [Inject]
         public IDiretoriaBusiness DiretoriaBusiness { get; set; }
+
+        [Inject]
+        public IAlocacaoBusiness AlocacaoBusiness { get; set; }
 
         [Inject]
         public IAtividadeBusiness AtividadeBusiness { get; set; }             
@@ -40,6 +44,68 @@ namespace GISWeb.Controllers
 
             return View();
         }
+
+
+
+        public ActionResult AlocarAtivFuncao(string IDFuncao, string IDEmpregado)
+        {
+            ViewBag.Atividade = AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.idFuncao.Equals(IDFuncao))).ToList();
+            try
+            {
+
+
+                var ListaAtividades = from A in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.idFuncao.Equals(IDFuncao))).ToList()
+                                     join F in FuncaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDFuncao.Equals(IDFuncao)).ToList()
+                                     on A.idFuncao equals F.IDFuncao
+                                     join AL in AlocacaoBusiness.Consulta.Where(p=>string.IsNullOrEmpty(p.UsuarioExclusao)&& p.Admissao.IDEmpregado.Equals(IDEmpregado)).ToList()
+                                     on F.IDFuncao equals AL.IDFuncao
+                                     into productGrupo
+                                     from item in productGrupo.DefaultIfEmpty()
+                                     select new AtividadeAlocadaFuncaoViewModel
+                                     {
+                                         Descricao = A.Descricao,
+                                         NomeDaImagem = A.NomeDaImagem,
+                                         Imagem = A.Imagem,
+                                         AlocaAtividade = (item == null ? false : true),                                         
+                                         IDAlocacao = item.IDAlocacao
+
+                                     };
+
+
+                List<AtividadeAlocadaFuncaoViewModel> lAtividades = ListaAtividades.ToList();
+
+
+
+                Atividade oIDAtividade = AtividadeBusiness.Consulta.FirstOrDefault(p => p.idFuncao.Equals(IDFuncao));
+                if (oIDAtividade == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Alerta = "Atividade não encontrado." } });
+                }
+                else
+                {
+                    return Json(new { data = RenderRazorViewToString("_AlocarAtivFuncao", lAtividades), Contar = lAtividades.Count() });
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.GetBaseException() == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                }
+                else
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                }
+            }
+
+        }
+
+
+
+
+
+
+
 
         //recebe parametro de Funcao/index e listaFuncao para listar atividades relacionadas a função
         public ActionResult ListaAtividadePorFuncao(string IDFuncao, string NomeFuncao)
@@ -88,6 +154,8 @@ namespace GISWeb.Controllers
             
             ViewBag.AtivId = id;
 
+            TempData["Funcao"] = nome;
+
             ViewBag.NomeFuncao = nome;
 
             ViewBag.NomeDiretoria = nomeDiretoria;
@@ -108,6 +176,7 @@ namespace GISWeb.Controllers
                                     where a.IDFuncao.Equals(id)
                                     select new Atividade()
                                     {
+                                        IDAtividade = b.IDAtividade,
                                         Descricao = b.Descricao,
 
                                         Funcao = new Funcao()
