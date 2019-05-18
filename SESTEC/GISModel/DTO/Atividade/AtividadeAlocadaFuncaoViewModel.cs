@@ -11,6 +11,8 @@ namespace GISModel.DTO.AtividadeAlocadaFuncao
 
         public string IDAtividade { get; set; }
 
+        public string IDFuncao { get; set; }
+
         public string IDAlocacao { get; set; }
 
         public string Descricao { get; set; }

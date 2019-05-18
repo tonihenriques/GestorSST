@@ -30,7 +30,8 @@ namespace GISCore.Business.Concrete
         {
 
 
-            List<AtividadeFuncaoLiberada> lAtividadeFuncaoLiberada = Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDAtividadeFuncaoLiberada.Equals(pAtividadeFuncaoLiberada.IDAtividadeFuncaoLiberada) && p.IDAtividade.Equals(pAtividadeFuncaoLiberada.IDAtividade)).ToList();
+            List<AtividadeFuncaoLiberada> lAtividadeFuncaoLiberada = Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDAtividade.Equals(pAtividadeFuncaoLiberada.IDAtividade)&& p.IDAlocacao.Equals(pAtividadeFuncaoLiberada.IDAlocacao)).ToList();
+
             if (lAtividadeFuncaoLiberada.Count.Equals(1))
             {
                 AtividadeFuncaoLiberada oAtividadeFuncaoLiberada = lAtividadeFuncaoLiberada[0];

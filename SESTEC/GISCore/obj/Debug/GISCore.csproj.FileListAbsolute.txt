@@ -502,3 +502,4 @@ C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.dll
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.pdb
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v_03.resources
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v05.resources
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v06.resources

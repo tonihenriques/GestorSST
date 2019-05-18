@@ -4,16 +4,17 @@
    // AplicajQdataTable("dynamic-table", [null, null, null, null, null, { "bSortable": false }], false, 20);
 
 //});
-function SalvarAtividadeEstabelecimento(Acao, idAtividadeEstabelecimento, idAlocacao)
+function SalvarAtividade(Acao, idAtividade, idAlocacao,IDFuncao)
 {
     $(".LoadingLayout").show();
     $('.page-content-area').ace_ajax('startLoading');
-    $.post('/AtividadeAlocada/SalvarAtividadeEstabelecimento',
+    $.post('/AtividadeFuncaoLiberada/SalvarAtividade',
         {
 
             Acao: Acao,
-            idAtividadeEstabelecimento: idAtividadeEstabelecimento,
-            idAlocacao: idAlocacao
+            idAtividade: idAtividade,
+            idAlocacao: idAlocacao,
+            IDFuncao: IDFuncao
         }, function (partial) {
             $('.page-content-area').ace_ajax('stopLoading', true);
             $(".LoadingLayout").hide();
@@ -24,15 +25,15 @@ function SalvarAtividadeEstabelecimento(Acao, idAtividadeEstabelecimento, idAloc
    
 }
 
-function OnSuccessCadastrarAtividadeAlocada(data) {
-    $('#formCadastroAtividadeAlocada').removeAttr('style');
-    $(".LoadingLayout").hide();
-    $('#btnSalvar').show();
-    TratarResultadoJSON(data.resultado);
-}
+//function OnSuccessCadastrarAtividadeAlocada(data) {
+//    $('#formCadastroAtividadeAlocada').removeAttr('style');
+//    $(".LoadingLayout").hide();
+//    $('#btnSalvar').show();
+//    TratarResultadoJSON(data.resultado);
+//}
 
-function OnBeginCadastrarAtividadeAlocada() {
-    $(".LoadingLayout").show();
-    $('#btnSalvar').hide();
-    $("#formCadastroAtividadeAlocada").css({ opacity: "0.5" });
-}
+//function OnBeginCadastrarAtividadeAlocada() {
+//    $(".LoadingLayout").show();
+//    $('#btnSalvar').hide();
+//    $("#formCadastroAtividadeAlocada").css({ opacity: "0.5" });
+//}

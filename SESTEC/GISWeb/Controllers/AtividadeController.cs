@@ -30,8 +30,8 @@ namespace GISWeb.Controllers
         [Inject]
         public IFuncaoBusiness FuncaoBusiness { get; set; }
 
-        //[Inject]
-        //public IAtividadeRiscosBusiness AtividadeRiscosBusiness { get; set; }
+        [Inject]
+        public IAtividadeFuncaoLiberadaBusiness AtividadeFuncaoLiberadaBusiness { get; set; }
 
         [Inject]
         public ITipoDeRiscoBusiness TipoDeRiscoBusiness { get; set; }
@@ -47,7 +47,7 @@ namespace GISWeb.Controllers
 
 
 
-        public ActionResult AlocarAtivFuncao(string IDFuncao, string IDEmpregado)
+        public ActionResult AlocarAtivFuncao(string IDFuncao, string IDEmpregado,string IDAlocacao)
         {
             ViewBag.Atividade = AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.idFuncao.Equals(IDFuncao))).ToList();
             try
@@ -55,10 +55,8 @@ namespace GISWeb.Controllers
 
 
                 var ListaAtividades = from A in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.idFuncao.Equals(IDFuncao))).ToList()
-                                     join F in FuncaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDFuncao.Equals(IDFuncao)).ToList()
-                                     on A.idFuncao equals F.IDFuncao
-                                     join AL in AlocacaoBusiness.Consulta.Where(p=>string.IsNullOrEmpty(p.UsuarioExclusao)&& p.Admissao.IDEmpregado.Equals(IDEmpregado)).ToList()
-                                     on F.IDFuncao equals AL.IDFuncao
+                                      join AFL in AtividadeFuncaoLiberadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDAlocacao.Equals(IDAlocacao)).ToList()
+                                      on A.IDAtividade equals AFL.IDAtividade  
                                      into productGrupo
                                      from item in productGrupo.DefaultIfEmpty()
                                      select new AtividadeAlocadaFuncaoViewModel
@@ -67,7 +65,9 @@ namespace GISWeb.Controllers
                                          NomeDaImagem = A.NomeDaImagem,
                                          Imagem = A.Imagem,
                                          AlocaAtividade = (item == null ? false : true),                                         
-                                         IDAlocacao = item.IDAlocacao
+                                         IDAlocacao = IDAlocacao, 
+                                         IDAtividade = A.IDAtividade,
+                                         IDFuncao = A.Funcao.IDFuncao
 
                                      };
 

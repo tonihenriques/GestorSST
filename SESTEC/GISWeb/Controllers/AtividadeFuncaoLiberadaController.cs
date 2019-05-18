@@ -73,7 +73,7 @@ namespace GISWeb.Controllers
 
 
         [HttpPost]
-        public ActionResult SalvarAtividade(bool Acao, string idAtividade, string idAlocacao)
+        public ActionResult SalvarAtividade(bool Acao, string idAtividade, string idAlocacao, string IDFuncao)
         {
             try
             {
@@ -91,6 +91,7 @@ namespace GISWeb.Controllers
                                 {
                                     IDAlocacao = item,
                                     IDAtividade = idAtividade,
+                                    IDFuncao = IDFuncao,
                                     //UsuarioInclusao = CustomAuthorizationProvider.UsuarioAutenticado.Usuario.Login
                                 });
                             }
@@ -102,6 +103,7 @@ namespace GISWeb.Controllers
                         {
                             IDAlocacao = idAlocacao,
                             IDAtividade = idAtividade,
+                            IDFuncao = IDFuncao,
                             //UsuarioInclusao = CustomAuthorizationProvider.UsuarioAutenticado.Usuario.Login
                         });
                     }
@@ -120,6 +122,7 @@ namespace GISWeb.Controllers
 
                                     IDAlocacao = item,
                                     IDAtividade = idAtividade,
+                                    IDFuncao = IDFuncao,
                                     DataExclusao = DateTime.Now,
                                     //UsuarioExclusao = CustomAuthorizationProvider.UsuarioAutenticado.Usuario.Login
                                 });
@@ -134,6 +137,7 @@ namespace GISWeb.Controllers
 
                             IDAlocacao = idAlocacao,
                             IDAtividade = idAtividade,
+                            IDFuncao = IDFuncao,
                             DataExclusao = DateTime.Now,
                             UsuarioExclusao = "LoginTeste"
                             //UsuarioExclusao = CustomAuthorizationProvider.UsuarioAutenticado.Usuario.Login

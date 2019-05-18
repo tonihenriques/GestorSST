@@ -305,7 +305,7 @@ function AlocarEmAmbiente(idEstabelecimento, idAlocacao) {
 };
 
 
-function AlocarAtivFuncao(IDFuncao, IDEmpregado) {
+function AlocarAtivFuncao(IDFuncao, IDEmpregado, IDAlocacao) {
 
 
     $(".LoadingLayout").show();
@@ -313,7 +313,12 @@ function AlocarAtivFuncao(IDFuncao, IDEmpregado) {
     $.ajax({
         method: "POST",
         url: "/Atividade/AlocarAtivFuncao",
-        data: { IDFuncao: IDFuncao, IDEmpregado: IDEmpregado },
+        data: {
+            IDFuncao: IDFuncao,
+            IDEmpregado: IDEmpregado,
+            IDAlocacao: IDAlocacao
+           
+        },
         error: function (erro) {
             $(".LoadingLayout").hide();
             ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')

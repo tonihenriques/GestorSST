@@ -97,8 +97,8 @@
                                                     @item.Departamento.Sigla
                                                     <br />
                                                     @*Equipe:&nbsp
-                                                    @item.Equipe.NomeDaEquipe
-                                                    <br />*@
+                                                        @item.Equipe.NomeDaEquipe
+                                                        <br />*@
                                                     Cargo:&nbsp
                                                     @item.Cargo.NomeDoCargo
                                                     <br />
@@ -122,7 +122,7 @@
                                                     Alocar Atividades do Ambiente &nbsp
                                                 </a>
                                                 &nbsp;
-                                                <a class="btn btn-secondary btn-lg btn-block" href="#" onclick="AlocarAtivFuncao('@item.IDFuncao','@item.Admissao.IDEmpregado');" data-rel="tooltip" title="Alocar Ambientes ">
+                                                <a class="btn btn-secondary btn-lg btn-block" href="#" onclick="AlocarAtivFuncao('@item.IDFuncao','@item.Admissao.IDEmpregado','@item.IDAlocacao');" data-rel="tooltip" title="Alocar Ambientes ">
                                                     <i class="ace-icon fa fa-check bigger-110"></i>
                                                     Alocar Atividades da Função &nbsp
                                                 </a>
@@ -184,10 +184,10 @@
                                                 </span>
                                             </a>
                                             @*<a href="#" class="tooltip-info" onclick="Exposicao('@iLista.IDAtividadeAlocada','@iLista.idAlocacao','@iLista.idAtividadesDoEstabelecimento');" data-rel="tooltip" title="Cadastrar Exposição ">
-                                                <span class="red">
-                                                    <i class="ace-icon fa fa-search bigger-120"></i>
-                                                </span>
-                                            </a>*@
+                                                    <span class="red">
+                                                        <i class="ace-icon fa fa-search bigger-120"></i>
+                                                    </span>
+                                                </a>*@
                                         </td>
                                     </tr>
 
@@ -243,10 +243,10 @@
                                                 </span>
                                             </a>
                                             @*<a href="#" class="tooltip-info" onclick="Exposicao('@iLista.IDAtividadeAlocada','@iLista.idAlocacao','@iLista.idAtividadesDoEstabelecimento');" data-rel="tooltip" title="Cadastrar Exposição ">
-                                                <span class="red">
-                                                    <i class="ace-icon fa fa-search bigger-120"></i>
-                                                </span>
-                                            </a>*@
+                                                    <span class="red">
+                                                        <i class="ace-icon fa fa-search bigger-120"></i>
+                                                    </span>
+                                                </a>*@
                                         </td>
                                     </tr>
 
@@ -272,6 +272,7 @@
     <script src="~/Scripts/Custom/AtividadeAlocada/Novo.js"></script>
     <script src="~/Scripts/Custom/Exposicao/Novo.js"></script>
     <script src="~/Scripts/Custom/AnaliseRisco/Novo.js"></script>
+    <script src="~/Scripts/Custom/AtividadeFuncaoLiberada/Novo.js"></script>
 }
 
 
