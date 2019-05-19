@@ -36,6 +36,43 @@ namespace GISWeb.Controllers
         [Inject]
         public ITipoDeRiscoBusiness TipoDeRiscoBusiness { get; set; }
 
+
+        [Inject]
+        public IPlanoDeAcaoBusiness PlanoDeAcaoBusiness { get; set; }
+
+        [Inject]
+        public IEventoPerigosoBusiness EventoPerigosoBusiness { get; set; }
+
+        [Inject]
+        public IPerigoPotencialBusiness PerigoPotencialBusiness { get; set; }
+
+        [Inject]
+        public IAtividadesDoEstabelecimentoBusiness AtividadesDoEstabelecimentoBusiness { get; set; }
+
+        [Inject]
+        public IEstabelecimentoAmbienteBusiness EstabelecimentoAmbienteBusiness { get; set; }
+
+        [Inject]
+        public IEstabelecimentoBusiness EstabelecimentoBusiness { get; set; }
+
+        [Inject]
+        public IAtividadeAlocadaBusiness AtividadeAlocadaBusiness { get; set; }        
+
+        [Inject]
+        public IMedidasDeControleBusiness MedidasDeControleBusiness { get; set; }
+
+        [Inject]
+        public IPossiveisDanosBusiness PossiveisDanosBusiness { get; set; }
+
+        [Inject]
+        public IAdmissaoBusiness AdmissaoBusiness { get; set; }
+
+        [Inject]
+        public IExposicaoBusiness ExposicaoBusiness { get; set; }
+
+
+
+
         #endregion
         // GET: TipoDeRisco
         public ActionResult Index()
@@ -261,6 +298,176 @@ namespace GISWeb.Controllers
 
             }
         }
+
+
+        public ActionResult AtividadesDaFuncao(string idAtividade, string idAlocacao, string idAtivFuncaoLiberada, string idEmpregado)
+        {
+
+            //listar a atividade e os riscos relacionados a função
+            List<TipoDeRisco> IRiscosDeAtivFuncaoLiberada = (from Tip in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                                             join ATE in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                                             on Tip.idAtividade equals ATE.IDAtividade
+                                                             join PD in PossiveisDanosBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                                             on Tip.idPossiveisDanos equals PD.IDPossiveisDanos
+                                                             join PP in PerigoPotencialBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                                             on Tip.idPerigoPotencial equals PP.IDPerigoPotencial
+                                                             join EP in EventoPerigosoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                                             on Tip.idEventoPerigoso equals EP.IDEventoPerigoso
+                                                             where Tip.idAtividade.Equals(idAtividade) && ATE.IDAtividade.Equals(idAtividade)
+                                                             select new TipoDeRisco()
+                                                             {
+                                                                 IDTipoDeRisco = Tip.IDTipoDeRisco,
+                                                                 EClasseDoRisco = Tip.EClasseDoRisco,
+                                                                 FonteGeradora = Tip.FonteGeradora,
+                                                                 Tragetoria = Tip.Tragetoria,
+                                                                 PossiveisDanos = new PossiveisDanos()
+                                                                 {
+                                                                     DescricaoDanos = PD.DescricaoDanos,
+
+                                                                 },
+                                                                 PerigoPotencial = new PerigoPotencial()
+                                                                 {
+                                                                     DescricaoEvento = PP.DescricaoEvento,
+                                                                 },
+                                                                 EventoPerigoso = new EventoPerigoso()
+                                                                 {
+                                                                     IDEventoPerigoso = EP.IDEventoPerigoso,
+                                                                     Descricao = EP.Descricao,
+                                                                 },
+                                                                 Atividade = new Atividade()
+                                                                 {
+                                                                     IDAtividade = ATE.IDAtividade,
+                                                                     Imagem = ATE.Imagem,
+                                                                     NomeDaImagem = ATE.NomeDaImagem,
+                                                                     Descricao = ATE.Descricao
+
+                                                                }
+                                                            }
+                                                                         
+                                                                      ).ToList();
+
+            ViewBag.ListaRiscosDeAtivFuncaoLiberada = IRiscosDeAtivFuncaoLiberada;
+
+            var lAtividades = ViewBag.ListaRiscosDeAtivFuncaoLiberada;
+
+            List<Atividade> IAtividade = (from A in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          join AFL in AtividadeFuncaoLiberadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on A.IDAtividade equals AFL.IDAtividade
+                                          where AFL.IDAtividade.Equals(idAtividade)
+                                          select new Atividade()
+                                          {
+                                              IDAtividade = A.IDAtividade,
+                                              NomeDaImagem = A.NomeDaImagem,
+                                              Imagem = A.Imagem,
+                                              Descricao = A.Descricao
+
+                                          }
+                                          ).ToList();
+
+
+            ViewBag.Atividade = IAtividade;
+
+
+            List<MedidasDeControleExistentes> ITipodeRisco = (from MCO in MedidasDeControleBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                              join TP in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                              on MCO.IDTipoDeRisco equals TP.IDTipoDeRisco 
+                                              join A in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                              on TP.idAtividade equals A.IDAtividade
+                                              where MCO.IDTipoDeRisco.Equals(TP.IDTipoDeRisco) && A.IDAtividade.Equals(idAtividade)
+                                              select new MedidasDeControleExistentes()
+                                              {
+
+                                                  IDMedidasDeControle = MCO.IDMedidasDeControle,
+                                                  IDTipoDeRisco = MCO.IDTipoDeRisco,
+
+                                                  TipoDeRisco = new TipoDeRisco()
+                                                  {
+                                                    idAtividade = TP.idAtividade,
+                                                    IDTipoDeRisco = TP.IDTipoDeRisco
+                                                  }
+                                                  
+
+                                              }
+
+                                             ).ToList();
+
+            ViewBag.ListaTipoDerisco = ITipodeRisco;
+
+
+            var MedidaDeControleExistente = from MC in MedidasDeControleBusiness.Consulta.Where(d => string.IsNullOrEmpty(d.UsuarioExclusao)).ToList()
+                                            join AE in TipoDeRiscoBusiness.Consulta.Where(d => string.IsNullOrEmpty(d.UsuarioExclusao)).ToList()
+                                            on MC.IDTipoDeRisco equals AE.IDTipoDeRisco
+                                            join ATE in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                            on AE.idAtividade equals ATE.IDAtividade
+                                            where AE.idAtividade.Equals(idAtividade)
+                                            select new MedidasDeControleExistentes()
+                                            {
+                                                IDTipoDeRisco = MC.IDTipoDeRisco,
+                                                IDMedidasDeControle = MC.IDMedidasDeControle,
+                                                NomeDaImagem = MC.NomeDaImagem,
+                                                Imagem = MC.Imagem,
+                                                EClassificacaoDaMedida = MC.EClassificacaoDaMedida,
+                                                MedidasExistentes = MC.MedidasExistentes,
+                                                EControle = MC.EControle,
+
+
+
+                                                TipoDeRisco = new TipoDeRisco()
+                                                {
+                                                    IDTipoDeRisco = AE.IDTipoDeRisco,
+                                                    idAtividadesDoEstabelecimento = AE.idAtividadesDoEstabelecimento,
+
+                                                },
+
+
+
+                                            };
+
+            List<MedidasDeControleExistentes> MedContEx = MedidaDeControleExistente.ToList();
+
+            var TotalMedidaControle = MedContEx.Count();
+
+            ViewBag.TotalMCE = TotalMedidaControle;
+
+            try
+            {
+                
+
+                if (lAtividades == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Alerta = "Ambiente não encontrado." } });
+                }
+                else
+                {
+                    return Json(new { data = RenderRazorViewToString("_ListaExpoAtivFuncao", lAtividades) });
+                }
+
+                
+
+            }
+            catch (Exception ex)
+            {
+
+                if (ex.GetBaseException() == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                }
+                else
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                }
+            }
+
+
+
+
+
+            
+        }
+
+
+
+
 
 
         public ActionResult Edicao(string id)

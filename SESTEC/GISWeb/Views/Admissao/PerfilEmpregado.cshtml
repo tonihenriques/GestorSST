@@ -183,11 +183,7 @@
                                                     <i class="ace-icon fa fa-search bigger-120"></i>
                                                 </span>
                                             </a>
-                                            @*<a href="#" class="tooltip-info" onclick="Exposicao('@iLista.IDAtividadeAlocada','@iLista.idAlocacao','@iLista.idAtividadesDoEstabelecimento');" data-rel="tooltip" title="Cadastrar Exposição ">
-                                                    <span class="red">
-                                                        <i class="ace-icon fa fa-search bigger-120"></i>
-                                                    </span>
-                                                </a>*@
+                                            
                                         </td>
                                     </tr>
 
@@ -226,27 +222,23 @@
                                     var IDEmp = @ViewBag.idEmpregado;
 
                                 }
-                                @foreach (var iLista in ViewBag.ListaAtividade)
+                                @foreach (var iLista in ViewBag.ListaAtivFuncaoLiberada)
                                 {
                                     <tr>
                                         <td>
-                                            <a href="#" class="tooltip-info" onclick="ListaExposicao('@iLista.idAlocacao','@iLista.IDAtividadeAlocada',' @iLista.Alocacao.Admissao.Empregado.Nome','@iLista.Alocacao.Admissao.Empregado.CPF','@iLista.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento');" data-rel="tooltip" title="Exposições ">
+                                            @*<a href="#" class="tooltip-info" onclick="ListaExposicao('@iLista.idAlocacao','@iLista.IDAtividade',' @iLista.Admissao.Empregado.Nome','@iLista.Alocacao.Admissao.Empregado.CPF','@iLista.IDAtividade');" data-rel="tooltip" title="Exposições ">*@
                                                 <span class="blue">
-                                                    @iLista.AtividadesDoEstabelecimento.DescricaoDestaAtividade
+                                                    @iLista.Atividade.Descricao
                                                 </span>
-                                            </a>
+                                            @*</a>*@
                                         </td>
                                         <td>
-                                            <a href="#" class="tooltip-info" onclick="EstabelecimentoAmbienteAlocado('@iLista.AtividadesDoEstabelecimento.IDEstabelecimento','@iLista.idAlocacao','@iLista.IDAtividadeAlocada','@iLista.idAtividadesDoEstabelecimento','@ViewBag.idEmpregado');" data-rel="tooltip" title="Riscos ">
+                                            <a href="#" class="tooltip-info" onclick="AtividadesDaFuncao('@iLista.Atividade.IDAtividade','@iLista.IDAlocacao','@iLista.IDAtividadeFuncaoLiberada','@iLista.Alocacao.Admissao.IDEmpregado');" data-rel="tooltip" title="Riscos ">
                                                 <span class="blue">
                                                     <i class="ace-icon fa fa-search bigger-120"></i>
                                                 </span>
                                             </a>
-                                            @*<a href="#" class="tooltip-info" onclick="Exposicao('@iLista.IDAtividadeAlocada','@iLista.idAlocacao','@iLista.idAtividadesDoEstabelecimento');" data-rel="tooltip" title="Cadastrar Exposição ">
-                                                    <span class="red">
-                                                        <i class="ace-icon fa fa-search bigger-120"></i>
-                                                    </span>
-                                                </a>*@
+
                                         </td>
                                     </tr>
 

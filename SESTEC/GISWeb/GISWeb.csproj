@@ -561,6 +561,7 @@
     <Content Include="Views\MedidasDeControle\NovoControleRiscoFuncao.cshtml" />
     <Content Include="Views\Atividade\_Upload.cshtml" />
     <Content Include="Views\Atividade\_AlocarAtivFuncao.cshtml" />
+    <Content Include="Views\Atividade\_ListaExpoAtivFuncao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

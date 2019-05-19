@@ -73,6 +73,48 @@ function ListaExposicao(idAlocacao, idAtividadeAlocada,Nome, cpf, idAtividadeEst
 }
 
 
+function ListaExpoAtivFuncao(idAlocacao, idAtividadeFuncaoLiberada, Nome, cpf, idAtividade) {
+
+    $(".LoadingLayout").show();
+
+    $.ajax({
+        method: "POST",
+        url: "/Admissao/ListaExposicao",
+        data: {
+            idAlocacao: idAlocacao,
+            idAtividadeFuncaoLiberada: idAtividadeFuncaoLiberada,
+            Nome: Nome, cpf: cpf,
+            idAtividade: idAtividade
+        },
+        error: function (erro) {
+            $(".LoadingLayout").hide();
+            ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')
+        },
+        success: function (content) {
+            $(".LoadingLayout").hide();
+
+            if (content.data != null) {
+                bootbox.dialog({
+                    message: content.data,
+                    title: "<span class='bigger-110'>Exposição ao Risco</span>",
+                    backdrop: true,
+                    locale: "br",
+                    buttons: {},
+                    onEscape: true
+                });
+            }
+            else {
+                TratarResultadoJSON(content.resultado);
+            }
+
+        }
+    });
+
+}
+
+
+
+
 
 //
 function ListarPlanoDeAcao(idTipoDeRisco) {
@@ -440,7 +482,50 @@ function EstabelecimentoAmbienteAlocado(idEstabelecimento, idAlocacao, idAtivida
 
 };
 
+function AtividadesDaFuncao(idAtividade, idAlocacao, idAtivFuncaoLiberada, idEmpregado) {
 
+    $(".LoadingLayout").show();
+
+    $.ajax({
+        method: "POST",
+        url: "/Atividade/AtividadesDaFuncao",
+        data: {
+            idAtividade: idAtividade,
+            idAlocacao: idAlocacao,            
+            idAtivFuncaoLiberada: idAtivFuncaoLiberada,
+            idEmpregado: idEmpregado
+        },
+        error: function (erro) {
+            $(".LoadingLayout").hide();
+            ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')
+        },
+        success: function (content) {
+            $(".LoadingLayout").hide();
+
+            if (content.data != null) {
+                bootbox.dialog({
+                    message: content.data,
+                    title: "<span class='bigger-110'>Atividades desta Função</span>",
+                    backdrop: true,
+                    locale: "br",
+                    buttons: {},
+                    onEscape: true
+                });
+            }
+            else {
+
+
+
+                TratarResultadoJSON(content.resultado);
+            }
+
+            AplicajQdataTable("RiscosRelacionadoAmbiente", [{ "bSortable": false }, null, null], false, 25);
+
+
+        }
+    });
+
+};
 
 function Ambiente(idEstabelecimento) {
 
