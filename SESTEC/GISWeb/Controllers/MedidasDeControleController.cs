@@ -42,12 +42,12 @@ namespace GISWeb.Controllers
             return View();
         }
 
-        public ActionResult BuscarDetalhesDeMedidasDeControleEstabelecimento(string IDAtividadesDoEstabelecimento)
+        public ActionResult BuscarDetalhesDeMedidasDeControleEstabelecimento(string IDTipoDeRisco)
         {
-            ViewBag.Imagens = MedidasDeControleBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDTipoDeRisco.Equals(IDAtividadesDoEstabelecimento))).ToList();
+            ViewBag.Imagens = MedidasDeControleBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDTipoDeRisco.Equals(IDTipoDeRisco))).ToList();
             try
             {
-                MedidasDeControleExistentes oMedidasDeControleExistentes = MedidasDeControleBusiness.Consulta.FirstOrDefault(p => p.IDTipoDeRisco.Equals(IDAtividadesDoEstabelecimento));
+                MedidasDeControleExistentes oMedidasDeControleExistentes = MedidasDeControleBusiness.Consulta.FirstOrDefault(p => p.IDTipoDeRisco.Equals(IDTipoDeRisco));
                 if (oMedidasDeControleExistentes == null)
                 {
                     return Json(new { resultado = new RetornoJSON() { Alerta = "Favor cadastrar uma medida de controle ou criar um Plano de Ação!!! ." } });

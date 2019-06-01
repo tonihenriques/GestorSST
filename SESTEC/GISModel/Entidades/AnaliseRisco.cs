@@ -27,6 +27,12 @@ namespace GISModel.Entidades
         [Display(Name = "Perigo Adicional")]
         public string IDPerigoPotencial { get; set; }
 
+        [Display(Name ="Risco Adicional")]
+        public string RiscoAdicional { get; set; }
+
+        [Display(Name ="Controle Proposto")]
+        public string ControleProposto { get; set; }
+
         public bool Conhecimento { get; set; }
 
         public bool BemEstar { get; set; }

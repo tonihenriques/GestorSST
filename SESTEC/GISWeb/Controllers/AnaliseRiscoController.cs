@@ -46,6 +46,9 @@ namespace GISWeb.Controllers
         [Inject]
         public IPerigoPotencialBusiness PerigoPotencialBusiness { get; set; }
 
+        [Inject]
+        public IMedidasDeControleBusiness MedidasDeControleBusiness { get; set; }
+
         #endregion
 
         // GET: AtividadeAlocada
@@ -90,8 +93,8 @@ namespace GISWeb.Controllers
                                          //Riscos = item1.PerigoPotencial.DescricaoEvento,
                                          //FonteGeradora = item1.FonteGeradora,
                                          AlocaAtividade = (item == null ? false : true),
-                                         Conhecimento = item.Conhecimento,
-                                         BemEstar = item.BemEstar,
+                                         //Conhecimento = item.Conhecimento,
+                                         //BemEstar = item.BemEstar,
 
 
 
@@ -152,27 +155,34 @@ namespace GISWeb.Controllers
                                  into TRGroup
                                  from item3 in TRGroup.DefaultIfEmpty()
 
+                                
 
                                  select new AnaliseRiscosViewModel
                                  {
                                      //DescricaoAtividade = item.AtividadeAlocada.AtividadesDoEstabelecimento.DescricaoDestaAtividade,
                                      //Riscos = item.AtividadeAlocada.AtividadesDoEstabelecimento.EventoPerigoso.Descricao,
+                                     IDTipoDeRisco= item3.IDTipoDeRisco,
                                      FonteGeradora = item3.FonteGeradora,
                                      IDAmissao = AL.Alocacao.Admissao.IDAdmissao,
                                      Imagem = AL.Alocacao.Admissao.Imagem,
                                      Riscos = item3.EventoPerigoso.Descricao,
                                      DescricaoAtividade = item2.DescricaoDestaAtividade,
                                      IDAtividadeAlocada = AL.IDAtividadeAlocada,
-                                     Conhecimento = item == null ? false : true,
-                                     BemEstar = item == null ? false : true,
+                                     Conhecimento = item? .Conhecimento??false,                                     
+                                     BemEstar = item?.BemEstar??false,
                                      PossiveisDanos = item3.PossiveisDanos.DescricaoDanos,
+                                     //DataDaAnalise = item?.DataInclusao??DateTime.Now,
                                      //IDEventoPerigoso = item?.IDEventoPerigoso ?? null,
                                      //IDPerigoPotencial=item? .IDPerigoPotencial ?? null,
                                      //Conhecimento = item?.Conhecimento ?? false,
                                      //BemEstar = item?.BemEstar ?? false,
                                      IDAtividadeEstabelecimento = AL.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento,
                                      imagemEstab = AL.AtividadesDoEstabelecimento.Imagem,
-                                     AlocaAtividade = item == null ? false : true
+                                     AlocaAtividade = item == null ? false : true,
+                                    
+
+
+
                                  };
 
 
@@ -202,12 +212,44 @@ namespace GISWeb.Controllers
                               Nome = Empre.Nome,
                               DataNascimento = Empre.DataNascimento,
 
-                          }
-
+                          },
+                          
+                          
 
                       };
 
             ViewBag.Emp = Emp.ToList();
+
+
+
+            var ListaEmpregado = from AL in AlocacaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDAlocacao.Equals(idAlocacao)).ToList()
+                                 select new Alocacao()
+                                 {
+                                     Admissao = new Admissao()
+                                     {
+                                       Empregado = new Empregado()
+                                       {
+                                           Nome = AL.Admissao.Empregado.Nome,
+                                       
+                                       },
+                                         Empresa = new Empresa()
+                                         {
+                                             NomeFantasia = AL.Admissao.Empresa.NomeFantasia
+                                         }
+                                     },
+
+                                   Equipe = new Equipe()
+                                   {
+                                       NomeDaEquipe = AL.Equipe.NomeDaEquipe
+                                   },
+                                                             
+
+
+                                 };
+
+            ViewBag.Listaempregado = ListaEmpregado;
+
+
 
 
             return View();
@@ -257,6 +299,38 @@ namespace GISWeb.Controllers
             }
 
         }
+
+        public ActionResult BuscarDetalhesDeMedidasDeControleTipoRisco(string IDTipoDeRisco)
+        {
+            ViewBag.Imagens = MedidasDeControleBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.IDTipoDeRisco.Equals(IDTipoDeRisco))).ToList();
+            try
+            {
+                MedidasDeControleExistentes oMedidasDeControleExistentes = MedidasDeControleBusiness.Consulta.FirstOrDefault(p => p.IDTipoDeRisco.Equals(IDTipoDeRisco));
+                if (oMedidasDeControleExistentes == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Alerta = "Favor cadastrar uma medida de controle ou criar um Plano de Ação!!! ." } });
+                }
+                else
+                {
+                    return Json(new { data = RenderRazorViewToString("_Detalhes", oMedidasDeControleExistentes) });
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.GetBaseException() == null)
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                }
+                else
+                {
+                    return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                }
+            }
+
+        }
+
+
+
 
 
 

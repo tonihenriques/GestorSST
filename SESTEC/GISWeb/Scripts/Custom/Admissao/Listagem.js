@@ -151,7 +151,41 @@ function ListarPlanoDeAcao(idTipoDeRisco) {
 
 }
 
+function BuscarDetalhesDeMedidasDeControleAtividadeFuncao(idTipoRisco, idAtividade) {
 
+    $(".LoadingLayout").show();
+
+    $.ajax({
+        method: "POST",
+        url: "/Atividade/BuscarDetalhesDeMedidasDeControleAtividadeFuncao",
+        data: {
+            idTipoRisco: idTipoRisco,
+            idAtividade: idAtividade
+        },
+        error: function (erro) {
+            $(".LoadingLayout").hide();
+            ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')
+        },
+        success: function (content) {
+            $(".LoadingLayout").hide();
+
+            if (content.data != null) {
+                bootbox.dialog({
+                    message: content.data,
+                    title: "<span class='bigger-110'>Controles de Riscos</span>",
+                    backdrop: true,
+                    locale: "br",
+                    buttons: {},
+                    onEscape: true
+                });
+            }
+            else {
+                TratarResultadoJSON(content.resultado);
+            }
+
+        }
+    });
+}
 
 
 function BuscarDetalhesDeMedidasDeControleEstabelecimento(id) {

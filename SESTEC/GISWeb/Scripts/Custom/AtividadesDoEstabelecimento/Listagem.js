@@ -133,14 +133,14 @@ function CriarPlanoDeAção(IDAtividadesDoEstabelecimento) {
 }
 
 
-function BuscarDetalhesDeMedidasDeControleEstabelecimento(IDAtividadesDoEstabelecimento) {
+function BuscarDetalhesDeMedidasDeControleEstabelecimento(IDTipoDeRisco) {
 
     $(".LoadingLayout").show();
 
     $.ajax({
         method: "POST",
         url: "/MedidasDeControle/BuscarDetalhesDeMedidasDeControleEstabelecimento",
-        data: { IDAtividadesDoEstabelecimento: IDAtividadesDoEstabelecimento },
+        data: { IDTipoDeRisco: IDTipoDeRisco },
         error: function (erro) {
             $(".LoadingLayout").hide();
             ExibirMensagemGritter('Oops! Erro inesperado', erro.responseText, 'gritter-error')

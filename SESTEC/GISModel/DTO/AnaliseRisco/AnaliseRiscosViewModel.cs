@@ -15,6 +15,8 @@ namespace GISModel.DTO.AnaliseRisco
 
         public string FonteGeradora { get; set; }
 
+        //public DateTime DataDaAnalise { get; set; }
+
         //public string NomeDaImagem { get; set; }
         public string imagemEstab { get; set; }
 
@@ -36,13 +38,17 @@ namespace GISModel.DTO.AnaliseRisco
 
         public string IDPerigoPotencial { get; set; }
 
-        //public string idControle { get; set; }
+        public string IDTipoDeRisco { get; set; }
 
-        //public Enum EClasseDoRisco { get; set; }
+        public string MedidaControleexistente { get; set; }
 
-        //public string Tragetoria { get; set; }
+        public string ImagemMedidaControle { get; set; }
 
-        //public string PossiveisDanos { get; set; }
+        public string NomeImagemMedidaControle { get; set; }
+
+        public Enum Classificação { get; set; }
+
+        public Enum Controle { get; set; }
 
         public bool Conhecimento { get; set; }
 

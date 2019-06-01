@@ -73,6 +73,13 @@ namespace GISWeb.Controllers
         [Inject]
         public IFuncaoBusiness FuncaoBusiness { get; set; }
 
+
+        [Inject]
+        public IDocsPorAtividadeBusiness DocsPorAtividadeBusiness { get; set; }
+
+        [Inject]
+        public IDocumentosPessoalBusiness DocumentosPessoalBusiness { get; set; }
+
         #endregion
 
 
@@ -267,7 +274,45 @@ namespace GISWeb.Controllers
             ViewBag.ListaAtivFuncaoLiberada = IAtividadeFuncaoLiberada;
 
 
-           
+            var ListaDocumentos =( from DOC in DocsPorAtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                  join A in AtividadeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                  on DOC.idAtividade equals A.IDAtividade
+                                  join AFL in AtividadeFuncaoLiberadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                  on DOC.idAtividade equals AFL.IDAtividade
+                                  join DP in DocumentosPessoalBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                  on DOC.idDocumentosEmpregado equals DP.IDDocumentosEmpregado
+                                  where AFL.Alocacao.Admissao.IDEmpregado.Equals(id)
+                                  select new DocsPorAtividade()
+                                  {
+
+                                     
+                                      Atividade = new Atividade()
+                                      {
+                                          IDAtividade = A.IDAtividade,
+                                          Descricao = A.Descricao,
+
+                                      },
+
+                                      DocumentosEmpregado = new DocumentosPessoal()
+                                      {
+                                          IDDocumentosEmpregado = DP.IDDocumentosEmpregado,
+
+                                          NomeDocumento = DP.NomeDocumento,
+                                          DescriçãoDocumento = DP.DescriçãoDocumento
+
+                                      }
+
+                                      
+
+                                      
+
+
+                                  }                               
+                                    ).ToList();
+
+            ViewBag.ListaDocumentos = ListaDocumentos;
+
+
 
 
             //ViewBag.Alocaçao = AlocacaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && (p.Admissao.IDEmpregado.Equals(id)) && (p.Ativado == "Ativado")).ToList();
@@ -484,7 +529,11 @@ namespace GISWeb.Controllers
 
         }
 
+        
 
+            
+
+            
 
         public ActionResult ListaExposicao(string idAlocacao,string idAtividadeAlocada, string Nome, string cpf, string idAtividadeEstabelecimento)
         {

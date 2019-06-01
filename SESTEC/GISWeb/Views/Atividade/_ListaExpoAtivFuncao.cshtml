@@ -18,9 +18,8 @@
 </div>
 
 
-    @foreach (var iImagens1 in ViewBag.Atividade)
+    @foreach (var iImagens1 in ViewBag.listaAtividade01)
     {
-
 
 
         <img src="/Images/AtividadesImagens/@iImagens1.IDAtividade/@iImagens1.Imagem" alt="Estabelecimento" width="90px" title="@iImagens1.NomeDaImagem" />
@@ -71,16 +70,17 @@
 
                                                         <div class="hidden-sm hidden-xs action-buttons center">
                                                             <div class="hidden-sm hidden-xs action-buttons">
-                                                                <a class="green" href="#" onclick="BuscarDetalhesDeMedidasDeControle('@iImagens.IDTipoDeRisco'); return false;">
-                                                                    <i class="ace-icon fa fa-search bigger-130" title="Medida de Controle Existente"></i>
-                                                                </a>
-                                                                <a href="#" class="tooltip-info" onclick="Exposicao();" data-rel="tooltip" title="Cadastrar Exposição ">
+                                                               @* <a class="green" href="#" onclick="BuscarDetalhesDeMedidasDeControleAtividadeFuncao('@iImagens.IDTipoDeRisco','@item.TipoDeRisco.Atividade.IDAtividade'); return false;">*@
+                                                                    <a class="green" href="#" onclick="BuscarDetalhesDeMedidasDeControleAtividadeFuncao('@iImagens.IDTipoDeRisco','@item.Atividade.IDAtividade'); return false;">
+                                                                        <i class="ace-icon fa fa-search bigger-130" title="Medida de Controle Existente"></i>
+                                                                    </a>
+                                                                    <a href="#" class="tooltip-info" onclick="Exposicao();" data-rel="tooltip" title="Cadastrar Exposição ">
                                                                         <span class="red">
                                                                             <i class="ace-icon fa fa-search bigger-120"></i>
                                                                         </span>
                                                                     </a>
 
-                                                            </div>
+</div>
                                                         </div>
                                                      }
                                                         else

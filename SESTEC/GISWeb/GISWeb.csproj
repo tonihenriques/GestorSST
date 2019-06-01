@@ -562,6 +562,8 @@
     <Content Include="Views\Atividade\_Upload.cshtml" />
     <Content Include="Views\Atividade\_AlocarAtivFuncao.cshtml" />
     <Content Include="Views\Atividade\_ListaExpoAtivFuncao.cshtml" />
+    <Content Include="Views\Atividade\_ControleRiscoFuncao.cshtml" />
+    <Content Include="Views\AnaliseRisco\_Detalhes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
