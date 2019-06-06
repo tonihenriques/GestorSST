@@ -127,7 +127,7 @@
                                                     Alocar Atividades da Função &nbsp
                                                 </a>
                                                 &nbsp;
-                                                <a href="@Url.Action("SalvarAnaliseRisco", "AnaliseRisco", new { idEstabelecimento=@item.idEstabelecimento,idAlocacao= @item.IDAlocacao})" class="btn btn-danger btn-lg btn-block" data-rel="tooltip" title="Análise de Risco">
+                                                <a href="@Url.Action("SalvarAnaliseRisco", "AnaliseRisco", new { idEstabelecimento=@item.idEstabelecimento,idAlocacao= @item.IDAlocacao, date = DateTime.Now})" class="btn btn-danger btn-lg btn-block" data-rel="tooltip" title="Análise de Risco">
                                                     <i class="ace-icon fa fa-plus bigger-120 blue"></i>
                                                     Análise de Riscos &nbsp
                                                 </a>

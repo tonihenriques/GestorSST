@@ -41,6 +41,8 @@ namespace GISModel.Entidades
 
         public virtual Alocacao Alocacao { get; set; }
 
+        public DateTime DataRealizada { get; set; }
+
 
 
 
