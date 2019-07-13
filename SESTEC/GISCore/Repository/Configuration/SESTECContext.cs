@@ -68,5 +68,13 @@ namespace GISCore.Repository.Configuration
 
         public DbSet<Usuario> Usuario { get; set; }
 
+        public DbSet<Aspecto> Aspecto { get; set; }
+
+        public DbSet<EquipeAspectoResposta> EquipeAspectoResposta { get; set; }
+
+        public DbSet<Pergunta> Pergunta { get; set; }
+
+        public DbSet<AspectoPergunta> AspectoPergunta { get; set; }
+
     }
 }

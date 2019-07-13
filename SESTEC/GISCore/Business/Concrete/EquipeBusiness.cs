@@ -37,7 +37,10 @@ namespace GISCore.Business.Concrete
                 
                 tempEquipe.NomeDaEquipe = pEquipe.NomeDaEquipe;
                 tempEquipe.ResumoAtividade = pEquipe.ResumoAtividade;
-
+                tempEquipe.Processo = pEquipe.Processo;
+                tempEquipe.LocalTrablho = pEquipe.LocalTrablho;
+                tempEquipe.Departamento = pEquipe.Departamento;
+                tempEquipe.Empresa = pEquipe.Empresa;
 
                 base.Alterar(tempEquipe);
 

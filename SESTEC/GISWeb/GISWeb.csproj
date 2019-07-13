@@ -389,6 +389,7 @@
     <Compile Include="Controllers\DocumentosPessoalController.cs" />
     <Compile Include="Controllers\EmpregadoController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\EquipeController.cs" />
     <Compile Include="Controllers\EstabelecimentoAmbienteController.cs" />
     <Compile Include="Controllers\EstabelecimentoController.cs" />
     <Compile Include="Controllers\EventoPerigosoController.cs" />
@@ -564,6 +565,9 @@
     <Content Include="Views\Atividade\_ListaExpoAtivFuncao.cshtml" />
     <Content Include="Views\Atividade\_ControleRiscoFuncao.cshtml" />
     <Content Include="Views\AnaliseRisco\_Detalhes.cshtml" />
+    <Content Include="Views\Equipe\Index.cshtml" />
+    <Content Include="Views\Equipe\Novo.cshtml" />
+    <Content Include="Views\Equipe\Edicao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -103,6 +103,8 @@
     <Compile Include="Entidades\Admissao.cs" />
     <Compile Include="Entidades\Alocacao.cs" />
     <Compile Include="Entidades\AnaliseRisco.cs" />
+    <Compile Include="Entidades\Aspecto.cs" />
+    <Compile Include="Entidades\AspectoPergunta.cs" />
     <Compile Include="Entidades\Atividade.cs" />
     <Compile Include="Entidades\AtividadeAlocada.cs" />
     <Compile Include="Entidades\AtividadeFuncaoLiberada.cs" />
@@ -119,9 +121,11 @@
     <Compile Include="Entidades\Empresa.cs" />
     <Compile Include="Entidades\EntidadeBase.cs" />
     <Compile Include="Entidades\Equipe.cs" />
+    <Compile Include="Entidades\EquipeAspectoResposta.cs" />
     <Compile Include="Entidades\Estabelecimento.cs" />
     <Compile Include="Entidades\EstabelecimentoAmbiente.cs" />
     <Compile Include="Entidades\EventoPerigoso.cs" />
+    <Compile Include="Entidades\Pergunta.cs" />
     <Compile Include="Entidades\PerigoPotencial.cs" />
     <Compile Include="Entidades\Exposicao.cs" />
     <Compile Include="Entidades\Funcao.cs" />

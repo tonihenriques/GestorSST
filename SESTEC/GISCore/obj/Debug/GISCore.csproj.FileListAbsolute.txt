@@ -507,3 +507,6 @@ C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Mig
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v11.resources
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v12.resources
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v13.resources
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v14.resources
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v15.resources
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v16.resources

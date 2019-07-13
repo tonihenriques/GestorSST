@@ -17,9 +17,20 @@ namespace GISModel.Entidades
         [Display(Name ="Nome da Equipe")]
         public string NomeDaEquipe { get; set; }
 
+        [Display(Name ="Processo")]
+        public string Processo { get; set; }
+
+        [Display(Name ="Local de Trabalho")]
+        public string LocalTrablho { get; set; }
+
         [Display(Name = "Resumo da Atividade")]
         public string ResumoAtividade { get; set; }
 
+        [Display(Name ="Departamento")]
+        public string Departamento { get; set; }
+
+        [Display(Name = "Empresa")]
+        public string Empresa { get; set; }
 
     }
 }

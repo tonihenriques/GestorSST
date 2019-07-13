@@ -181,7 +181,7 @@ namespace GISWeb.Controllers
                                      IDAtividadeEstabelecimento = AL.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento,
                                      imagemEstab = AL.AtividadesDoEstabelecimento.Imagem,
                                      AlocaAtividade = item == null ? false : true,
-                                     //DataRealizada = 
+                                    
                                  };                  
 
 

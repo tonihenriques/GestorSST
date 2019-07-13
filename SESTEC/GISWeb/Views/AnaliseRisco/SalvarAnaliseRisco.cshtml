@@ -61,14 +61,16 @@
             <thead>
                 <tr>
                     <th width="50px"></th>
-                    <th width="50px"></th>
-                    <th>
-                        <div class="responsive">
-                            Riscos
-                        </div>
+                    <th width="50px">
+                    <div class="responsive">
+                        Riscos
+                    </div>
                     </th>
                     <th>
                         Possíveis Danos (clique para ver os Controles)
+                    </th>
+                    <th>
+                        
                     </th>
 
                     @*<th>
@@ -83,9 +85,7 @@
                     <th>
 
                     </th>
-                    <th>
-
-                    </th>
+                    
                     <th width="89px"></th>
                 </tr>
 
@@ -97,22 +97,22 @@
                     var DateHJ = DateTime.Now.ToString("dd/MM/yyyy");
 
 
-                    if (DateHJ == DateAR)
-                    {
+                    //if (DateHJ == DateAR)
+                    //{
 
-                        using (Ajax.BeginForm("SalvarAnaliseRisco", "AnaliseRisco", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnBeginCadastrarAnaliseRisco", OnSuccess = "OnSuccessCadastrarAnaliseRisco", }, new { @id = "formCadastroAnaliseRisco", @class = "form-horizontal" }))
-                        {
+                    using (Ajax.BeginForm("SalvarAnaliseRisco", "AnaliseRisco", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnBeginCadastrarAnaliseRisco", OnSuccess = "OnSuccessCadastrarAnaliseRisco", }, new { @id = "formCadastroAnaliseRisco", @class = "form-horizontal" }))
+                    {
                                 @Html.AntiForgeryToken()
 
                                 <tr id="linha-@item.IDAtividadeAlocada">
     
 
-                                    <td class="center">
+                                    @*<td class="center">
                                     <label class="pos-rel">
                                         <input type="checkbox" class="ace" />
                                         <span class="lbl"></span>
                                     </label>
-                                </td>
+                                </td>*@
                                 <td>
 
 
@@ -324,7 +324,7 @@
 
                             </tr>
 
-                                            }
+                                            //}
 
                                         }
                 }
