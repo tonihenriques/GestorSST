@@ -14,15 +14,10 @@ namespace GISModel.Entidades
         [Key]
         public string IDAspecto { get; set; }
 
-        [Display(Name = "Conteudo de Trabalho")]
-        public string ConteudoTrabalho { get; set; }
-
-        [Display(Name = "Carga e Ritmo do Trabalho")]
-        public string CargaRitmo { get; set; }
+        [Display(Name = "Descriçao")]
+        public string DescricaoAspecto { get; set; }
 
         
-
-
 
     }
 }
