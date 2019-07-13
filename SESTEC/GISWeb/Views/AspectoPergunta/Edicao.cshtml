@@ -1,0 +1,107 @@
+﻿@model GISModel.Entidades.AspectoPergunta
+
+@{
+    ViewBag.Title = "Edição de Aspecto / Pergunta";
+}
+
+
+<div id="formEditAspectoPergunta">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 widget-container-col ui-sortable">
+            <div class="page-header">
+                <h1>
+                    Edição de Aspecto / Pergunta
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    @if (Model == null)
+    {
+        <div class="error-container">
+            <div class="well">
+                <h1 class="grey lighter smaller">
+                    <span class="blue bigger-125">
+                        <i class="ace-icon fa fa-exclamation-triangle"></i>
+                        Oops
+                    </span>
+                    Não foi possível encontrar este Aspecto / Pergunta.
+                </h1>
+
+                <hr />
+                <div class="space"></div>
+
+                <div class="center">
+                    <a href="javascript:history.back()" class="btn btn-grey">
+                        <i class="ace-icon fa fa-arrow-left"></i>
+                        Voltar
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        using (Ajax.BeginForm("Atualizar", "AspectoPergunta", null, new AjaxOptions { HttpMethod = "POST", OnBegin = "OnBeginAtualizarAspectoPergunta", OnSuccess = "OnSuccessAtualizarAspectoPergunta", }, new { @id = "formEdicaoAspectoPergunta", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+
+
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        @Html.Label("Aspecto", new { @class = "form-field-select-3 col-xs-12 col-sm-6 no-padding-right" })
+                        <div class="col-xs-12 col-sm-12">
+                            @Html.DropDownList("idAspecto", (SelectList)ViewBag.Aspecto, "Selecione um Aspecto...", new { @class = "chosen-select form-control tag-input-style", @id = "ddlAspecto", @autocomplete = "on" })
+                            @Html.ValidationMessage("idAspecto", string.Empty, new { @style = "font-size: 10px; color: #a94442;" })
+                            @Html.HiddenFor(d => d.IDAspectoPergunta)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Pergunta", new { @class = "form-field-select-3 col-xs-12 col-sm-6 no-padding-right" })
+                        <div class="col-xs-12 col-sm-12">
+                            @Html.DropDownList("idPergunta", (SelectList)ViewBag.Pergunta, "Selecione uma Pergunta...", new { @class = "chosen-select form-control tag-input-style", @id = "ddlPergunta", @autocomplete = "on" })
+                            @Html.ValidationMessage("idPergunta", string.Empty, new { @style = "font-size: 10px; color: #a94442;" })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                                   
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 align-center">
+                    <button class="btn btn-info" id="blnSalvar" type="submit">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Salvar
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-warning" type="reset">
+                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                        Limpar
+                    </button>
+                    &nbsp;
+                    <a class="btn" href="javascript:history.back()">
+                        <i class="ace-icon fa fa-arrow-left"></i>
+                        Voltar
+                    </a>
+                </div>
+            </div>
+        }
+    }
+
+
+
+</div> <!-- Fim FormQuery -->
+
+
+@section Scripts {
+<script src="~/Scripts/Custom/AspectoPergunta/Edicao.js"></script>
+    
+}
+
+

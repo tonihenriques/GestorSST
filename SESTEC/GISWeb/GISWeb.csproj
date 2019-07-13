@@ -253,6 +253,10 @@
     <Content Include="Scripts\Custom\AmbienteDoEstabelecimento\Lista.js" />
     <Content Include="Scripts\Custom\AmbienteDoEstabelecimento\Novo.js" />
     <Content Include="Scripts\Custom\AnaliseRisco\Novo.js" />
+    <Content Include="Scripts\Custom\AspectoPergunta\Edicao.js" />
+    <Content Include="Scripts\Custom\AspectoPergunta\Excluir.js" />
+    <Content Include="Scripts\Custom\AspectoPergunta\Lista.js" />
+    <Content Include="Scripts\Custom\AspectoPergunta\Novo.js" />
     <Content Include="Scripts\Custom\Aspecto\Edicao.js" />
     <Content Include="Scripts\Custom\Aspecto\Excluir.js" />
     <Content Include="Scripts\Custom\Aspecto\Lista.js" />
@@ -385,6 +389,7 @@
     <Compile Include="Controllers\AlocacaoController.cs" />
     <Compile Include="Controllers\AnaliseRiscoController.cs" />
     <Compile Include="Controllers\AspectoController.cs" />
+    <Compile Include="Controllers\AspectoPerguntaController.cs" />
     <Compile Include="Controllers\AtividadeAlocadaController.cs" />
     <Compile Include="Controllers\AtividadeController.cs" />
     <Compile Include="Controllers\AtividadeFuncaoLiberadaController.cs" />
@@ -584,6 +589,9 @@
     <Content Include="Views\Pergunta\Index.cshtml" />
     <Content Include="Views\Pergunta\Novo.cshtml" />
     <Content Include="Views\Pergunta\Edicao.cshtml" />
+    <Content Include="Views\AspectoPergunta\Index.cshtml" />
+    <Content Include="Views\AspectoPergunta\Novo.cshtml" />
+    <Content Include="Views\AspectoPergunta\Edicao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
