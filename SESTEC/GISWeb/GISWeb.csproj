@@ -338,6 +338,10 @@
     <Content Include="Scripts\Custom\MedidasDeControle\Edicao.js" />
     <Content Include="Scripts\Custom\MedidasDeControle\Listagem.js" />
     <Content Include="Scripts\Custom\MedidasDeControle\Novo.js" />
+    <Content Include="Scripts\Custom\Pergunta\Edicao.js" />
+    <Content Include="Scripts\Custom\Pergunta\Excluir.js" />
+    <Content Include="Scripts\Custom\Pergunta\Lista.js" />
+    <Content Include="Scripts\Custom\Pergunta\Novo.js" />
     <Content Include="Scripts\Custom\PlanoDeAcao\Listagem.js" />
     <Content Include="Scripts\Custom\PlanoDeAcao\Novo.js" />
     <Content Include="Scripts\Custom\PossiveisDanos\Edicao.js" />
@@ -401,6 +405,7 @@
     <Compile Include="Controllers\ExposicaoController.cs" />
     <Compile Include="Controllers\FuncaoController.cs" />
     <Compile Include="Controllers\MedidasDeControleController.cs" />
+    <Compile Include="Controllers\PerguntaController.cs" />
     <Compile Include="Controllers\PlanoDeAcaoController.cs" />
     <Compile Include="Controllers\PossiveisDanosController.cs" />
     <Compile Include="Controllers\TipoDeRiscoController.cs" />
@@ -576,6 +581,9 @@
     <Content Include="Views\Aspecto\Index.cshtml" />
     <Content Include="Views\Aspecto\Novo.cshtml" />
     <Content Include="Views\Aspecto\Edicao.cshtml" />
+    <Content Include="Views\Pergunta\Index.cshtml" />
+    <Content Include="Views\Pergunta\Novo.cshtml" />
+    <Content Include="Views\Pergunta\Edicao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
