@@ -68,3 +68,10 @@ C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpe
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\bin\Debug\GISHelpers.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\bin\Debug\Ionic.Zip.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CoreCompileInputs.cache
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.csproj.CopyComplete
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISHelpers\obj\Debug\GISHelpers.pdb
