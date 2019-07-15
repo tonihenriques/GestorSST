@@ -626,3 +626,14 @@ C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.csproj.CoreCompi
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.csproj.CopyComplete
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Domain.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Domain.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Application.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Infrastructure.Dapper.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Infrastructure.EntityFramework.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Ninject.Extensions.Factory.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Castle.Core.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Application.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Infrastructure.Dapper.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Infrastructure.EntityFramework.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Ninject.Extensions.Factory.xml
