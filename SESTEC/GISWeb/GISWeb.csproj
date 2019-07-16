@@ -310,6 +310,10 @@
     <Content Include="Scripts\Custom\Empresa\Edicao.js" />
     <Content Include="Scripts\Custom\Empresa\Listagem.js" />
     <Content Include="Scripts\Custom\Empresa\Novo.js" />
+    <Content Include="Scripts\Custom\EquipeAspectoResposta\Edicao.js" />
+    <Content Include="Scripts\Custom\EquipeAspectoResposta\Excluir.js" />
+    <Content Include="Scripts\Custom\EquipeAspectoResposta\Lista.js" />
+    <Content Include="Scripts\Custom\EquipeAspectoResposta\Novo.js" />
     <Content Include="Scripts\Custom\Equipe\Edicao.js" />
     <Content Include="Scripts\Custom\Equipe\Excluir.js" />
     <Content Include="Scripts\Custom\Equipe\Lista.js" />
@@ -403,6 +407,7 @@
     <Compile Include="Controllers\DocumentosPessoalController.cs" />
     <Compile Include="Controllers\EmpregadoController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\EquipeAspectoRespostaController.cs" />
     <Compile Include="Controllers\EquipeController.cs" />
     <Compile Include="Controllers\EstabelecimentoAmbienteController.cs" />
     <Compile Include="Controllers\EstabelecimentoController.cs" />
@@ -592,6 +597,9 @@
     <Content Include="Views\AspectoPergunta\Index.cshtml" />
     <Content Include="Views\AspectoPergunta\Novo.cshtml" />
     <Content Include="Views\AspectoPergunta\Edicao.cshtml" />
+    <Content Include="Views\EquipeAspectoResposta\Index.cshtml" />
+    <Content Include="Views\EquipeAspectoResposta\Novo.cshtml" />
+    <Content Include="Views\EquipeAspectoResposta\_Resposta.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

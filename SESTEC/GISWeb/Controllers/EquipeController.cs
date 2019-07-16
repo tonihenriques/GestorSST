@@ -146,6 +146,8 @@ namespace GISWeb.Controllers
             try
             {
                 Equipe oEquipe = EquipeBusiness.Consulta.FirstOrDefault(p => p.IDEquipe.Equals(IDEquipe));
+
+
                 if (oEquipe == null)
                 {
                     return Json(new { resultado = new RetornoJSON() { Erro = "Não foi possível excluir a Equipe!" } });

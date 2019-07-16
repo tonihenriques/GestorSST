@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Abstract\IEquipeaspectoRespostaBusiness .cs" />
     <Compile Include="Business\Abstract\IAspectoPerguntaBusiness.cs" />
     <Compile Include="Business\Abstract\IPerguntaBusiness.cs" />
     <Compile Include="Business\Abstract\IAspectoBusiness.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Business\Abstract\IPossiveisDanosBusiness.cs" />
     <Compile Include="Business\Abstract\ITipoDeRiscoBusiness.cs" />
     <Compile Include="Business\Abstract\IUsuarioBusiness.cs" />
+    <Compile Include="Business\Concrete\EquipeAspectoRespostaBusiness.cs" />
     <Compile Include="Business\Concrete\AspectoBusiness.cs" />
     <Compile Include="Business\Concrete\AnaliseRiscoBusiness.cs" />
     <Compile Include="Business\Concrete\AtividadeFuncaoLiberadaBusiness.cs" />

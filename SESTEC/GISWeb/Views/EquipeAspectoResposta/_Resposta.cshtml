@@ -1,0 +1,50 @@
+﻿@using GISModel.Entidades
+
+@{
+    ViewBag.Title = "Questionário";
+}
+
+
+@using (Ajax.BeginForm("Cadastrar", "EquipeAspecto", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccessCadastrarEquipeAspecto", }, new { @id = "formCadastroEquipeAspecto", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    if (ViewBag.Pergunta != null)
+    {
+        foreach (var item in ViewBag.Pergunta)
+        {
+
+            @item.Aspecto.DescricaoAspecto
+        <br/>
+
+            @item.Pergunta.Descricao
+        }
+
+
+    }
+
+
+
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 align-center">
+            <button class="btn btn-info" id="btnSalvar" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                Salvar
+            </button>
+            &nbsp;
+            @*<button class="btn btn-warning" type="reset">
+                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                    Limpar
+                </button>*@
+            &nbsp;
+            <a class="btn" href="javascript:history.back()">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                Voltar
+            </a>
+        </div>
+    </div>
+}
+
+
