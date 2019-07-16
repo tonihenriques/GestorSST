@@ -17,7 +17,12 @@ namespace Gestor.Application.Business
 
         public void Cadastrar(CadastrarEmpregadoViewModel cadastrarEmpregadoViewModel)
         {
-            throw new NotImplementedException();
+            //TODO: ajustar usuario...
+            var empregado = new Empregado("ivan", cadastrarEmpregadoViewModel.Cpf, cadastrarEmpregadoViewModel.Nome, cadastrarEmpregadoViewModel.DataNascimento, cadastrarEmpregadoViewModel.Email, "");
+
+            empregadoRepository.Inserir(empregado);
+
+            empregadoRepository.UnitOfWork.SaveEntities();
         }
     }
 }

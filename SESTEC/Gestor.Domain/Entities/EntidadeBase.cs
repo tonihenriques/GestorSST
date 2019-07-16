@@ -20,6 +20,7 @@ namespace Gestor.Domain.Entities
 
             UsuarioInclusao = usuarioInclusao;
             DataInclusao = DateTime.Now;
+            DataExclusao = DateTime.MaxValue;
         }
 
         protected void SetDadosExclusao(string usuarioExclusao)

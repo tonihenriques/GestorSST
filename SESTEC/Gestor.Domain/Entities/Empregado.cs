@@ -11,8 +11,8 @@ namespace Gestor.Domain.Entities
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Email { get; set; }
-        public string Endereco { get; set; }
-        public bool Admitido { get; private set; }
+        public string Endereco { get; set; } //TODO: precisa mesmo dessa informação?
+        public bool Admitido { get; private set; } //TODO: remover propriedade e coluna do banco. Essa propriedade deve ter valor dinamico.
 
         private Empregado()
         {
@@ -26,7 +26,7 @@ namespace Gestor.Domain.Entities
             if (string.IsNullOrWhiteSpace(nome))
                 throw new CampoNaoPodeSerNuloException(nameof(nome));
 
-            if (string.IsNullOrWhiteSpace(nome))
+            if (string.IsNullOrWhiteSpace(email))
                 throw new CampoNaoPodeSerNuloException(nameof(email));
 
             Id = Guid.NewGuid();

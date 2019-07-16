@@ -508,12 +508,14 @@ C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Mig
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\GISCore.dll.config
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\GISCore.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\GISCore.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Castle.Core.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\EntityFramework.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\EntityFramework.SqlServer.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\GISHelpers.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\GISModel.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.Extensions.Conventions.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.Extensions.Factory.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ionic.Zip.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\System.Web.Mvc.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\System.Web.WebPages.dll
@@ -528,6 +530,7 @@ C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\EntityFramework.xml
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\EntityFramework.SqlServer.xml
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.xml
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.Extensions.Conventions.xml
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.Extensions.Factory.xml
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\System.Web.Mvc.xml
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\System.Web.WebPages.xml
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\bin\Debug\System.Web.Razor.xml

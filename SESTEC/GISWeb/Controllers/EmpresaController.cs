@@ -16,6 +16,12 @@ namespace GISWeb.Controllers
     //[Autorizador]
     public class EmpresaController : Controller
     {
+        private readonly Gestor.Domain.Business.IEmpregadoBusiness empregadoBusiness;
+
+        public EmpresaController(Gestor.Domain.Business.IEmpregadoBusiness empregadoBusiness)
+        {
+            this.empregadoBusiness = empregadoBusiness ?? throw new ArgumentNullException(nameof(empregadoBusiness));
+        }
 
         #region
 
@@ -38,6 +44,17 @@ namespace GISWeb.Controllers
 
         public ActionResult Index()
         {
+            //TODO: testes das business - Ivan - criar projetinho de teste pra facilitar os testes das camadas...
+            //var tst = new Gestor.Domain.ViewModels.Empregado.CadastrarEmpregadoViewModel()
+            //{
+            //    Cpf = "07298385607",
+            //    DataNascimento = DateTime.Now,
+            //    Email = "ivan@live.com",
+            //    Nome = "Ivan Borges"
+            //};
+
+            //empregadoBusiness.Cadastrar(tst);
+
 
             ViewBag.Empresas = EmpresaBusiness.Consulta.Where(p=> string.IsNullOrEmpty(p.UsuarioExclusao) ).ToList();
 

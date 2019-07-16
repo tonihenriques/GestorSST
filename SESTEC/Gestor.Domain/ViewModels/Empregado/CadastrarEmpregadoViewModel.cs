@@ -8,7 +8,7 @@ namespace Gestor.Domain.ViewModels.Empregado
         [Display(Name = "CPF")]
         [Required(ErrorMessage = "CPF obrigatório")]
         //[CustomValidationCPF(ErrorMessage = "CPF inválido")]
-        public string CPF { get; set; }
+        public string Cpf { get; set; }
 
         [Required(ErrorMessage = "O nome é obrigatório")]
         public string Nome { get; set; }

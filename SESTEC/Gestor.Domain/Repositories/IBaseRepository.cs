@@ -5,6 +5,8 @@ namespace Gestor.Domain.Repositories
 {
     public interface IBaseRepository<T> where T : EntidadeBase
     {
+        IUnitOfWork UnitOfWork { get; }
+
         void Inserir(T entidade);
 
         void Alterar(T entidade);
