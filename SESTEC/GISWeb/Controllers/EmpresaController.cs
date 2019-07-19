@@ -45,15 +45,15 @@ namespace GISWeb.Controllers
         public ActionResult Index()
         {
             //TODO: testes das business - Ivan - criar projetinho de teste pra facilitar os testes das camadas...
-            //var tst = new Gestor.Domain.ViewModels.Empregado.CadastrarEmpregadoViewModel()
-            //{
-            //    Cpf = "07298385607",
-            //    DataNascimento = DateTime.Now,
-            //    Email = "ivan@live.com",
-            //    Nome = "Ivan Borges"
-            //};
+            var tst = new Gestor.Domain.ViewModels.Empregado.CadastrarEmpregadoViewModel()
+            {
+                Cpf = "07298385607",
+                DataNascimento = DateTime.Now,
+                Email = "ivan@live.com",
+                Nome = "Ivan Borges"
+            };
 
-            //empregadoBusiness.Cadastrar(tst);
+            var result = empregadoBusiness.Cadastrar(tst);
 
 
             ViewBag.Empresas = EmpresaBusiness.Consulta.Where(p=> string.IsNullOrEmpty(p.UsuarioExclusao) ).ToList();

@@ -5,6 +5,9 @@ namespace Gestor.Domain.Entities
 {
     public class EntidadeBase
     {
+        public string Id { get; protected set; }
+        public Guid Uid => new Guid(Id);
+
         public string UsuarioInclusao { get; private set; }
 
         public DateTime DataInclusao { get; private set; }

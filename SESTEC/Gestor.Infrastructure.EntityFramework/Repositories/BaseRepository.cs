@@ -8,7 +8,7 @@ namespace Gestor.Infrastructure.EntityFramework.Repositories
 {
     internal class BaseRepository<T> : IBaseRepository<T> where T : EntidadeBase
     {
-        private readonly GestorContext gestorContext;
+        protected readonly GestorContext gestorContext;
 
         public IUnitOfWork UnitOfWork => gestorContext;
 

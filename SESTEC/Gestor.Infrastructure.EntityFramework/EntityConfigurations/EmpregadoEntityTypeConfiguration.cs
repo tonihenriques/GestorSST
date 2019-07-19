@@ -10,8 +10,9 @@ namespace Gestor.Infrastructure.EntityFramework.EntityConfigurations
             ToTable("tbEmpregado");
 
             HasKey(e => e.Id);
-
             Property(e => e.Id).HasColumnName("IDEmpregado");
+            Ignore(e => e.Uid);
+
             Property(e => e.Cpf).HasColumnName("CPF").IsRequired();
             Property(e => e.Nome).IsRequired();
             Property(e => e.DataNascimento).IsRequired();

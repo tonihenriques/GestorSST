@@ -6,7 +6,6 @@ namespace Gestor.Domain.Entities
 {
     public class Empregado : EntidadeBase
     {
-        public Guid Id { get; private set; }
         public string Cpf { get; private set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
@@ -29,7 +28,7 @@ namespace Gestor.Domain.Entities
             if (string.IsNullOrWhiteSpace(email))
                 throw new CampoNaoPodeSerNuloException(nameof(email));
 
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             Cpf = cpf;
             Nome = nome.Trim();
             DataNascimento = dataNascimento;
