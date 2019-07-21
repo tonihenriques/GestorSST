@@ -17,8 +17,9 @@ namespace Gestor.Infrastructure.EntityFramework.EntityConfigurations
             Property(e => e.Nome).IsRequired();
             Property(e => e.DataNascimento).IsRequired();
             Property(e => e.Email).IsRequired();
-            Property(e => e.Endereco).IsOptional();
-            Property(e => e.Admitido).IsRequired();
+            Property(e => e.Telefone).IsOptional();
+            Property(e => e.Matricula).IsOptional();
+            Property(e => e.Status).IsRequired();
 
             Property(e => e.UsuarioInclusao).IsOptional();
             Property(e => e.DataInclusao).IsRequired();

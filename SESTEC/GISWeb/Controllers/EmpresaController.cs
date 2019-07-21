@@ -45,16 +45,30 @@ namespace GISWeb.Controllers
         public ActionResult Index()
         {
             //TODO: testes das business - Ivan - criar projetinho de teste pra facilitar os testes das camadas...
-            var tst = new Gestor.Domain.ViewModels.Empregado.CadastrarEmpregadoViewModel()
-            {
-                Cpf = "07298385607",
-                DataNascimento = DateTime.Now,
-                Email = "ivan@live.com",
-                Nome = "Ivan Borges"
-            };
+            //var tst = new Gestor.Domain.ViewModels.Empregado.CadastrarEmpregadoViewModel()
+            //{
+            //    Cpf = "07298385607",
+            //    DataNascimento = DateTime.Now,
+            //    Email = "ivan@live.com",
+            //    Nome = "Ivan Borges"
+            //};
 
-            var result = empregadoBusiness.Cadastrar(tst);
+            //var result = empregadoBusiness.Cadastrar(tst);
 
+            //var tst = new Gestor.Domain.ViewModels.Empregado.AtualizarEmpregadoViewModel()
+            //{
+            //    Cpf = "07298385607",
+            //    DataNascimento = DateTime.Now.AddYears(-20),
+            //    Email = "ivan@live.com",
+            //    Nome = "Ivan Borges 2",
+            //    Telefone = "(31) 9 7535 2000",
+            //    Matricula = "E208842"
+            //};
+
+            //empregadoBusiness.Atualizar(new Guid("B28605A1-392A-495C-A8E8-F118BD1EAC07"), tst);
+
+            //if (!empregadoBusiness.PossuiFoto(new Guid("B28605A1-392A-495C-A8E8-F118BD1EAC07")))
+            //    throw new Exception("");
 
             ViewBag.Empresas = EmpresaBusiness.Consulta.Where(p=> string.IsNullOrEmpty(p.UsuarioExclusao) ).ToList();
 

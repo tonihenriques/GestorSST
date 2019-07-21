@@ -639,3 +639,5 @@ C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.csproj.CoreCompi
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.csproj.CopyComplete
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\obj\Debug\GISWeb.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Infrastructure.FileSystem.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\GISWeb\bin\Gestor.Infrastructure.FileSystem.pdb

@@ -6,23 +6,24 @@ namespace Gestor.Domain.ViewModels.Empregado
     public class CadastrarEmpregadoViewModel
     {
         [Display(Name = "CPF")]
-        [Required(ErrorMessage = "CPF obrigatório")]
-        //[CustomValidationCPF(ErrorMessage = "CPF inválido")]
+        [Required]
+        //[CustomValidationCPF(ErrorMessage = "CPF inválido")] //TODO: criar o filtro e colocar aqui !
         public string Cpf { get; set; }
 
-        [Required(ErrorMessage = "O nome é obrigatório")]
+        [Required]
         public string Nome { get; set; }
 
-        //public string Imagem { get; set; }
-
-        //[Required(ErrorMessage = "O sexo é obrigatório")]
-        //public Sexo? Sexo { get; set; }
-
         [Display(Name = "Data de Nascimento")]
-        public DateTime DataNascimento { get; set; }
+        [Required]
+        public DateTime? DataNascimento { get; set; }
 
-        [Required(ErrorMessage = "Informe o e-mail do empregado")]
-        [EmailAddress(ErrorMessage = "Informe um e-mail válido")]
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+
+        public string Telefone { get; set; }
+
+        [Display(Name = "Matrícula")]
+        public string Matricula { get; set; }
     }
 }

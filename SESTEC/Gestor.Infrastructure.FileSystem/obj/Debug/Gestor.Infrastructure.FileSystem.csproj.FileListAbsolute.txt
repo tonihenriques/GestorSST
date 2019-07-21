@@ -1,0 +1,16 @@
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Gestor.Infrastructure.FileSystem.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Gestor.Infrastructure.FileSystem.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Castle.Core.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Gestor.Domain.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Ninject.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Ninject.Extensions.Conventions.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Ninject.Extensions.Factory.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Gestor.Domain.pdb
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Ninject.xml
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Ninject.Extensions.Conventions.xml
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\bin\Debug\Ninject.Extensions.Factory.xml
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\obj\Debug\Gestor.Infrastructure.FileSystem.csprojAssemblyReference.cache
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\obj\Debug\Gestor.Infrastructure.FileSystem.csproj.CoreCompileInputs.cache
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\obj\Debug\Gestor.Infrastructure.FileSystem.csproj.CopyComplete
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\obj\Debug\Gestor.Infrastructure.FileSystem.dll
+C:\Repos\tonihenriques\GestorSST\SESTEC\Gestor.Infrastructure.FileSystem\obj\Debug\Gestor.Infrastructure.FileSystem.pdb

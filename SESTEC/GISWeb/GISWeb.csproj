@@ -604,6 +604,10 @@
       <Project>{20d99c0e-babd-4eba-8da1-3db66abf68e7}</Project>
       <Name>Gestor.Infrastructure.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gestor.Infrastructure.FileSystem\Gestor.Infrastructure.FileSystem.csproj">
+      <Project>{52793e49-4629-4707-8b5d-040ae5b2989a}</Project>
+      <Name>Gestor.Infrastructure.FileSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GISCore\GISCore.csproj">
       <Project>{cb60d092-e5f0-490f-903b-b4cd3f346640}</Project>
       <Name>GISCore</Name>

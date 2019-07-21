@@ -1,5 +1,6 @@
 ﻿using Gestor.Application;
 using Gestor.Infrastructure.EntityFramework;
+using Gestor.Infrastructure.FileSystem;
 using GISCore.DI;
 using GISWeb.Infraestrutura.Provider.Abstract;
 using GISWeb.Infraestrutura.Provider.Concrete;
@@ -16,7 +17,11 @@ namespace GISWeb.Infraestrutura.DependencyResolver
 
         public NinjectDependencyResolver()
         {
-            Kernel = new StandardKernel(new GISNinjectModule(), new GestorApplicationNinjectModule(), new GestorEntityFrameworkNinjectModule());
+            Kernel = new StandardKernel(new GISNinjectModule(), 
+                new GestorApplicationNinjectModule(), 
+                new GestorEntityFrameworkNinjectModule(),
+                new GestorFileSystemNinjectModule());
+
             Addbindings();
         }
 

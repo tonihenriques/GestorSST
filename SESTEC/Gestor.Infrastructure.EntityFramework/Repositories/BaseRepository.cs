@@ -19,6 +19,12 @@ namespace Gestor.Infrastructure.EntityFramework.Repositories
 
         public IQueryable<T> Consulta => throw new NotImplementedException();
 
+        public T ObterPeloId(Guid id)
+        {
+            var entidade = gestorContext.Set<T>().SingleOrDefault(e => e.Id == id.ToString());
+            return entidade;
+        }
+
         public void Inserir(T entidade)
         {
             gestorContext.Entry(entidade).State = EntityState.Added;

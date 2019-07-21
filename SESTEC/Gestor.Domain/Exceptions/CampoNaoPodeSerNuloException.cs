@@ -1,7 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Gestor.Domain.Exceptions
 {
+    [Serializable]
     public class CampoNaoPodeSerNuloException : CoreException
     {
         public override string Key => "CampoNaoPodeSerNulo";
