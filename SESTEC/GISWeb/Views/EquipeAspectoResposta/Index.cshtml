@@ -36,7 +36,7 @@
                             <th>Local</th>
                             <th>Processo</th>
                             <th>Atividade</th>
-                            <th width="89px"></th>
+                            <th width="89px">Questionário</th>
                         </tr>
 
                     </thead>
@@ -67,43 +67,27 @@
                                             </a>*@
 
                                         <a class="red" href="#" onclick="Questionario('@item.IDEquipe');">
-                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                            <i class="fa fa-book fa-fw" aria-hidden="true"></i>
                                         </a>
                                     </div>
 
-                                    @*<div class="hidden-md hidden-lg">
+                                    <div class="hidden-md hidden-lg">
                                             <div class="inline pos-rel">
                                                 <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
                                                     <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
                                                 </button>
 
                                                 <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                                    <li>
-                                                        <a href="#" class="tooltip-info" onclick="BuscarDetalhesEmpresa('@iImagens.IDEstabelecimentoImagens'); return false;" data-rel="tooltip" title="View">
-                                                            <span class="blue">
-                                                                <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                                            </span>
-                                                        </a>
-                                                    </li>
+                                                                                                    
 
                                                     <li>
-                                                        <a href='@Url.Action("Edicao", "Empresa", new { id = @iImagens.IDEstabelecimentoImagens })' class="tooltip-success" data-rel="tooltip" title="Edit">
-                                                            <span class="green">
-                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-error" onclick="DeletarEmpresa('@iImagens.IDEstabelecimentoImagens', '@iImagens.NomeDaImagem');" data-rel="tooltip" title="Delete">
-                                                            <span class="red">
-                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                            </span>
+                                                        <a class="red" href="#" onclick="Questionario('@item.IDEquipe');">
+                                                            <i class="fa fa-book fa-fw" aria-hidden="true"></i>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>*@
+                                        </div>
                                 </td>
                             </tr>
 
@@ -141,4 +125,6 @@
 
 
     <script src="~/Scripts/Custom/EquipeAspectoResposta/Lista.js"></script>
+    <script src="~/Scripts/Custom/EquipeAspectoResposta/Novo.js"></script>
+
 }

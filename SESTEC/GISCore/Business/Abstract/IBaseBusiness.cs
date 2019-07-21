@@ -1,6 +1,7 @@
 ﻿using GISModel.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,10 @@ namespace GISCore.Business.Abstract
         void Excluir(T entidade);
 
         IQueryable<T> Consulta { get; }
+
+        string ExecuteQuery(string query);
+
+        DataTable GetDataTable(string sqlQuery);
 
     }
 }

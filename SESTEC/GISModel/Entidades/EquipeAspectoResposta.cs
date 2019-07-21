@@ -16,18 +16,17 @@ namespace GISModel.Entidades
 
         public string idEquipe { get; set; }
 
-        public string idAspecto { get; set; }
+        public string idAspectoPergunta { get; set; }
 
-        public string idPergunta { get; set; }
+        //public string idAspecto { get; set; }
+
+        //public string idPergunta { get; set; }
 
         public Boolean Sim_Nao { get; set; }
 
         public virtual Equipe Equipe { get; set; }
 
-        public virtual Aspecto Aspecto { get; set; }
-
-        public virtual Pergunta Pergunta { get; set; }
-
+        public virtual AspectoPergunta AspectoPergunta { get; set; }
 
     }
 }

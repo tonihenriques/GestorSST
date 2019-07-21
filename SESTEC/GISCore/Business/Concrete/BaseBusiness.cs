@@ -4,6 +4,7 @@ using GISModel.Entidades;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,16 @@ namespace GISCore.Business.Concrete
         public virtual IQueryable<T> Consulta
         {
             get { return Repository.Consulta; }
+        }
+
+        public string ExecuteQuery(string query)
+        {
+            return Repository.ExecuteQuery(query);
+        }
+
+        public DataTable GetDataTable(string sqlQuery)
+        {
+            return Repository.GetDataTable(sqlQuery);
         }
 
     }

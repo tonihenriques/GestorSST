@@ -37,8 +37,8 @@ namespace GISCore.Business.Concrete
             {
 
                 tempEquipeAspectoResposta.idEquipe = pEquipeAspectoResposta.idEquipe;
-                tempEquipeAspectoResposta.idAspecto = pEquipeAspectoResposta.idAspecto;
-                tempEquipeAspectoResposta.idPergunta = pEquipeAspectoResposta.idPergunta;
+                //tempEquipeAspectoResposta.idAspecto = pEquipeAspectoResposta.idAspecto;
+                //tempEquipeAspectoResposta.idPergunta = pEquipeAspectoResposta.idPergunta;
                 tempEquipeAspectoResposta.Sim_Nao = pEquipeAspectoResposta.Sim_Nao;
 
                 base.Alterar(tempEquipeAspectoResposta);

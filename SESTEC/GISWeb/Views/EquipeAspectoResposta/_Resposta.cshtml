@@ -1,50 +1,133 @@
-﻿@using GISModel.Entidades
+﻿@using GISModel.DTO.QuestionarioPssicossocial
 
 @{
     ViewBag.Title = "Questionário";
 }
 
 
-@using (Ajax.BeginForm("Cadastrar", "EquipeAspecto", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccessCadastrarEquipeAspecto", }, new { @id = "formCadastroEquipeAspecto", @class = "form-horizontal" }))
+
+
+
+@if (ViewBag.Contar > 0)
 {
-    @Html.AntiForgeryToken()
 
-    if (ViewBag.Pergunta != null)
+    foreach (var item in ViewBag.Filtro)
     {
-        foreach (var item in ViewBag.Pergunta)
+        using (Ajax.BeginForm("Cadastrar", "EquipeAspectoResposta", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccessCadastrarEquipeAspectoResposta", }, new { @id = "formCadEquipeAspectoResposta", @class = "form-horizontal" }))
         {
+            @Html.AntiForgeryToken()
+            <div id="formCadEquipeAspectoResposta">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 widget-container-col ui-sortable">
+                        <div class="page-header">
+                            <h1>
+                                Registro Psicossocial
+                            </h1>
+                        </div>
+                    </div>
+                </div>
 
-            @item.Aspecto.DescricaoAspecto
-        <br/>
 
-            @item.Pergunta.Descricao
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="form-group">
+                            @Html.Label("Descricao", new { @class = "form-field-select-3 col-xs-12 col-sm-6 no-padding-right" })
+                            <br />                         
+                            
+                            <div class="col-xs-12 col-sm-12">
+                                @item.Descricao
+                                <input type="text" name="idEquipe" id="idEquipe" value=@item.idEquipe hidden />
+                                <input type="text" name="idAspectoPergunta" id="idAspectoPergunta" value=@item.idAspectoPergunta hidden />
+                            </div>
+                        </div>
+                    </div><br />
+
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 align-center">
+                    <button class="btn btn-info" id="btnSalvar" type="submit">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Salvar
+                    </button>
+                    &nbsp;
+                    <a class="red" href="#" onclick="Questionario('@item.idEquipe');">
+                        <i class="fa fa-archive" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+        }
+    }
+}
+else
+{
+
+
+    foreach (var item2 in ViewBag.Query01)
+    {
+        using (Ajax.BeginForm("Cadastrar", "EquipeAspectoResposta", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccessCadastrarEquipeAspectoResposta", }, new { @id = "formCadEquipeAspectoResposta", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <div id="formCadEquipeAspectoResposta">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 widget-container-col ui-sortable">
+                        <div class="page-header">
+                            <h1>
+                                Registro Psicossocial
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            @Html.Label("Descricao", new { @class = "form-field-select-3 col-xs-12 col-sm-6 no-padding-right" })
+                            <div class="col-xs-12 col-sm-12">
+                                @item2.Descricao
+                                <input type="text" name="idEquipe" id="idEquipe" value=@item2.idEquipe hidden />
+                                <input type="text" name="idAspectoPergunta" id="idAspectoPergunta" value=@item2.idAspectoPergunta hidden />
+                            </div>
+                        </div>
+                    </div><br />
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 align-center">
+                    <button class="btn btn-info" id="btnSalvar" type="submit">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Salvar
+                    </button>
+                    &nbsp;                    
+                    <a class="red" href="#" onclick="Questionario('@item2.idEquipe');">
+                        <i class="fa fa-archive" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+            </div>
+
         }
 
 
     }
 
-
-
-
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3 align-center">
-            <button class="btn btn-info" id="btnSalvar" type="submit">
-                <i class="ace-icon fa fa-check bigger-110"></i>
-                Salvar
-            </button>
-            &nbsp;
-            @*<button class="btn btn-warning" type="reset">
-                    <i class="ace-icon fa fa-undo bigger-110"></i>
-                    Limpar
-                </button>*@
-            &nbsp;
-            <a class="btn" href="javascript:history.back()">
-                <i class="ace-icon fa fa-arrow-left"></i>
-                Voltar
-            </a>
-        </div>
-    </div>
 }
 
 
+
+            
+@section Scripts {
+    @Scripts.Render("~/bundles/jQ_dataTable")
+
+    <script src="~/Scripts/Custom/EquipeAspectoResposta/Novo.js"></script>
+
+}

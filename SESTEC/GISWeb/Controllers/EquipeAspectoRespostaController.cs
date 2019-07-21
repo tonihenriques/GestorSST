@@ -9,6 +9,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GISModel.DTO.QuestionarioPssicossocial;
+using System.Data;
+using GISHelpers.Utils;
+using GISModel.Enums;
+using GISWeb.Infraestrutura.Provider.Abstract;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Web.SessionState;
+
 
 namespace GISWeb.Controllers
 {
@@ -32,6 +42,13 @@ namespace GISWeb.Controllers
         [Inject]
         public IAspectoPerguntaBusiness AspectoPerguntaBusiness { get; set; }
 
+        [Inject]
+        public IPerguntaBusiness PerguntaBusiness { get; set; }
+
+        [Inject]
+        public IAspectoBusiness AspectoBusiness { get; set; }
+
+
 
         #endregion
 
@@ -51,13 +68,12 @@ namespace GISWeb.Controllers
 
         public ActionResult Novo(string idEquipe, string nome)
         {
-
             try
             {
                 ViewBag.Pergunta = AspectoPerguntaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList();
-                //List<AspectoPergunta> oAspectoPergunta = AspectoPerguntaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList();
+                ViewBag.idEquipe = idEquipe;                   
 
-               
+                
 
                 if (ViewBag.Pergunta == null)
                 {
@@ -65,7 +81,87 @@ namespace GISWeb.Controllers
                 }
                 else
                 {
-                    return Json(new { data = RenderRazorViewToString("_Resposta", ViewBag.Pergunta) });
+                    //string sql = @"select top 1 IDPergunta, Descricao
+                    //               from tbPergunta
+                    //               where IDPergunta not in (
+                    //         select ap.idPergunta
+                    //         from tbEquipe e, Rel_EquipeAspectoResposta ear, Rel_AspectoPergunta ap
+                    //         where NomeDaEquipe = 'Equipe Rocket' and
+                    //      e.IDEquipe = ear.idEquipe and
+                    //      ear.idAspectoPergunta = ap.IDAspectoPergunta)";
+
+                    var Query = (from P in AspectoPerguntaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                 
+                                 select new VMRespostas()
+                                 {
+                                      idEquipe = idEquipe,
+                                      idPergunta = P.Pergunta.IDPergunta,
+                                      Pergunta  =  P.Aspecto.DescricaoAspecto,
+                                      Descricao = P.Pergunta.Descricao,
+                                      idAspectoPergunta = P.IDAspectoPergunta
+
+                                 });
+                    
+
+                    var Pergunta =            
+                            (from EQ in EquipeBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                            join EA in EquipeAspectoRespostaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                            on EQ.IDEquipe equals EA.idEquipe
+                            join AP in AspectoPerguntaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                            on EA.idAspectoPergunta equals AP.IDAspectoPergunta
+                            //join A in AspectoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                            //on EA.idAspecto equals A.IDAspecto
+                            into EQGroup
+                            from item in EQGroup.DefaultIfEmpty()                                                                                 
+                            where EQ.IDEquipe.Equals(idEquipe)
+                                select new VMRespostas()
+                                {
+                                    idEquipe = EQ.IDEquipe,
+                                    Equipe = EQ.NomeDaEquipe,
+                                    idPergunta = item.Pergunta.IDPergunta,
+                                    idAspectoPergunta = item.IDAspectoPergunta,
+                                    Pergunta = item.Aspecto.DescricaoAspecto,
+                                    Descricao = item.Pergunta.Descricao
+
+
+                                }).ToList();
+
+                    var lRespostas = Pergunta.Count();
+                    ViewBag.Contar = lRespostas;
+                    ViewBag.Pergunta = Pergunta.ToList();
+                    
+
+                    ViewBag.Query = Query;
+
+                    ViewBag.Query01 = Query.Take(1);
+
+                    List<VMRespostas> Filtro = new List<VMRespostas>();
+
+                    foreach (var item2 in Query)
+                    {
+                                            
+                    foreach(var item in Pergunta)
+                    {
+
+                       if(item2.idPergunta != item.idPergunta && item.idEquipe.Equals(idEquipe))
+                            {
+                                Filtro.Add(item2);
+                            }
+                           
+                    }
+                    };
+
+                    ViewBag.Filtro = Filtro.Take(1);
+                    ViewBag.Resposta = Pergunta.ToList(); 
+
+
+
+
+
+                    return Json(new { data = RenderRazorViewToString("_Resposta", lRespostas) });
+                    
+
+
                 }
             }
             catch (Exception ex)
@@ -81,13 +177,41 @@ namespace GISWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Cadastrar()
+        [ValidateAntiForgeryToken]
+        public ActionResult Cadastrar(EquipeAspectoResposta oEquipeAspectoResposta)
         {
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    EquipeAspectoRespostaBusiness.Inserir(oEquipeAspectoResposta);
 
+                    TempData["MensagemSucesso"] = "A Resposta foi cadastrada com sucesso!";
 
+                    return Json(new { resultado = new RetornoJSON() { URL = Url.Action("Index", "EquipeAspectoResposta") } });
+                    //, new { id = oEquipeAspectoResposta.idEquipe }) } });
 
-            return View();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.GetBaseException() == null)
+                    {
+                        return Json(new { resultado = new RetornoJSON() { Erro = ex.Message } });
+                    }
+                    else
+                    {
+                        return Json(new { resultado = new RetornoJSON() { Erro = ex.GetBaseException().Message } });
+                    }
+                }
+
+            }
+            else
+            {
+                return Json(new { resultado = TratarRetornoValidacaoToJSON() });
+
+            }
+
         }
 
 

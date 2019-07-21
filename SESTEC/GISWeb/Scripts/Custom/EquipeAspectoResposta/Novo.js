@@ -3,16 +3,16 @@
 
 
 
-function OnSuccessCadastrarEquipe(data) {
-    $('#formCadastroEquipe').removeAttr('style');
+function OnSuccessCadastrarEquipeAspectoResposta(data) {
+    $('#formCadEquipeAspectoResposta').removeAttr('style');
     $(".LoadingLayout").hide();
     $('#btnSalvar').show();
     TratarResultadoJSON(data.resultado);
     ExibirMsgGritter(data.resultado);
 }
 
-function OnBeginCadastrarEquipe() {
+function OnBeginCadastrarEquipeAspectoResposta() {
     $(".LoadingLayout").show();
     $('#blnSalvar').hide();
-    $("#formCadastroEquipe").css({ opacity: "0.5" });
+    $("#formCadEquipeAspectoResposta").css({ opacity: "0.5" });
 }

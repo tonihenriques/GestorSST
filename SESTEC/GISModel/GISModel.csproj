@@ -99,6 +99,7 @@
     <Compile Include="DTO\Departamento\CadastroViewModel.cs" />
     <Compile Include="DTO\Menu\PerfilMenuViewModel.cs" />
     <Compile Include="DTO\Permissoes\UsuarioPerfilViewModel.cs" />
+    <Compile Include="DTO\QuestionarioPssicossocial\VMRespostas.cs" />
     <Compile Include="DTO\Shared\RetornoJSON.cs" />
     <Compile Include="Entidades\Admissao.cs" />
     <Compile Include="Entidades\Alocacao.cs" />

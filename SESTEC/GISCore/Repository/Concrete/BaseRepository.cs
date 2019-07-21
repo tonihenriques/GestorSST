@@ -3,6 +3,8 @@ using GISCore.Repository.Configuration;
 using GISModel.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -55,6 +57,46 @@ namespace GISCore.Repository.Concrete
             }
 
         }
-       
+
+        public string ExecuteQuery(string query)
+        {
+            return Context.Database.SqlQuery<string>(query).FirstOrDefault();
+        }
+
+        public DataTable GetDataTable(string sqlQuery)
+        {
+            try
+            {
+                DbProviderFactory factory = DbProviderFactories.GetFactory(Context.Database.Connection);
+
+                using (var cmd = factory.CreateCommand())
+                {
+                    cmd.CommandText = sqlQuery;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = Context.Database.Connection;
+                    using (var adapter = factory.CreateDataAdapter())
+                    {
+                        adapter.SelectCommand = cmd;
+
+                        var tb = new DataTable();
+                        adapter.Fill(tb);
+                        return tb;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Error occurred during SQL query execution {0}", sqlQuery), ex);
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
 }

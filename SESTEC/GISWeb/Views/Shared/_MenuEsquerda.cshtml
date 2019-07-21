@@ -53,12 +53,12 @@
                 <b class="arrow"></b>
             </li>
             @*<li id="menuLateralPesquisaRapida">
-                <a href="@Url.Action("EmpregadosSemAdmissao", "Empregado")">
-                    <i class="menu-icon fa fa-bolt"></i>
-                    Empregado sem Admissão
-                </a>
-                <b class="arrow"></b>
-            </li>*@
+                    <a href="@Url.Action("EmpregadosSemAdmissao", "Empregado")">
+                        <i class="menu-icon fa fa-bolt"></i>
+                        Empregado sem Admissão
+                    </a>
+                    <b class="arrow"></b>
+                </li>*@
 
 
         </ul>
@@ -81,7 +81,7 @@
                 </a>
                 <b class="arrow"></b>
             </li>
-            </ul>
+        </ul>
 
 
     </li>
@@ -92,7 +92,7 @@
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text" style="font-weight: bold;">
-              Menu
+                Menu
             </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
@@ -251,31 +251,69 @@
                         </a>
                         <b class="arrow"></b>
                     </li>
-                    @*<li id="menuLateralPesquisaAvancada">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-caret-right"></i>
-                Avançada
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
 
-                <li id="liTeste">
-                    <a href="#">
-                        Usuário
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-
-            </ul>
-        </li>*@
                 </ul>
-                </li>
+            </li>
+    </li>
+
+    <li id="menuLateralCadastroHira">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text" style="font-weight: bold;">
+                Cadastro Psicossocial Admin
+            </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <ul class="submenu">
+            <li id="menuLateralPesquisaRapida">
+                <a href="@Url.Action("Index", "Equipe")">
+                    <i class="menu-icon fa fa-bolt"></i>
+                    Equipe
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li id="menuLateralPesquisaRapida">
+                <a href="@Url.Action("Index", "Pergunta")">
+                    <i class="menu-icon fa fa-bolt"></i>
+                    Pergunta
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li id="menuLateralPesquisaRapida">
+                <a href="@Url.Action("Index", "Aspecto")">
+                    <i class="menu-icon fa fa-bolt"></i>
+                    Aspecto
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li id="menuLateralPesquisaRapida">
+                <a href="@Url.Action("Index", "AspectoPergunta")">
+                    <i class="menu-icon fa fa-bolt"></i>
+                    Aspecto/Pergunta
+                </a>
+                <b class="arrow"></b>
             </li>
 
-            @*@if (ViewBag.IsAdministrador)
+            <li id="menuLateralPesquisaRapida">
+                <a href="@Url.Action("Index", "EquipeAspectoResposta")">
+                    <i class="menu-icon fa fa-bolt"></i>
+                    Questionário
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>   
+        
+    </li>
+
+
+
+
+
+
+    @*@if (ViewBag.IsAdministrador)
         {*@
-            @*<li id="menuLateralAdministracao">
+    @*<li id="menuLateralAdministracao">
             <a href="@Url.Action("")">
                 <i class="menu-icon fa fa-gears"></i>
                 <span class="menu-text" style="font-weight: bold;">
@@ -284,9 +322,9 @@
                 <b class="arrow"></b>
             </a>
         </li>*@
-            @*}*@
+    @*}*@
 
-            @*<li id="menuLateralMeusPedidos">
+    @*<li id="menuLateralMeusPedidos">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-shopping-cart"></i>
                 <span class="menu-text" style="font-weight: bold;">
@@ -313,7 +351,7 @@
             </ul>
         </li>*@
 
-        </ul>
+</ul>
 
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
             <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
