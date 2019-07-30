@@ -189,8 +189,13 @@ namespace GISWeb.Controllers
 
                     TempData["MensagemSucesso"] = "A Resposta foi cadastrada com sucesso!";
 
+                    
+
                     return Json(new { resultado = new RetornoJSON() { URL = Url.Action("Index", "EquipeAspectoResposta") } });
+                   
+                    
                     //, new { id = oEquipeAspectoResposta.idEquipe }) } });
+
 
                 }
                 catch (Exception ex)
