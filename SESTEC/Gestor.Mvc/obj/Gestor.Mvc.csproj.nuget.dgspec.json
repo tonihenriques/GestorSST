@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Development\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {}
+    "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {}
   },
   "projects": {
-    "E:\\Development\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {
+    "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Development\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
+        "projectUniqueName": "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
         "projectName": "Gestor.Mvc",
-        "projectPath": "E:\\Development\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
-        "packagesPath": "C:\\Users\\ivanb\\.nuget\\packages\\",
-        "outputPath": "E:\\Development\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\obj\\",
+        "projectPath": "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
+        "packagesPath": "C:\\Users\\133162\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ivanb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\133162\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

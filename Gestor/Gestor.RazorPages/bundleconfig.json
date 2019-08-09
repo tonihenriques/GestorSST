@@ -1,0 +1,44 @@
+[
+  {
+    "outputFileName": "wwwroot/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/custom/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/custom/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/custom/js/user-interactions.min.js",
+    "inputFiles": [
+      "wwwroot/custom/js/user-interactions.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootbox/dist/bootbox.min.js",
+    "inputFiles": [
+      "wwwroot/lib/bootbox/dist/bootbox.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/custom/js/layout-master.min.js",
+    "inputFiles": [
+      "wwwroot/custom/js/layout-master.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/custom/js/settings-datatable.min.js",
+    "inputFiles": [
+      "wwwroot/custom/js/settings-datatable.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/admin-lte/plugins/iCheck/all.min.css",
+    "inputFiles": [
+      "wwwroot/admin-lte/plugins/iCheck/all.css"
+    ]
+  }
+]

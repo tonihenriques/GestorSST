@@ -1,0 +1,116 @@
+﻿@inject Furiza.Base.Core.Identity.Abstractions.IUserPrincipalBuilder userPrincipalBuilder
+
+@if (userPrincipalBuilder.UserPrincipal != null && userPrincipalBuilder.UserPrincipal.Claims.Any())
+{
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="~/custom/img/generic_avatar.png" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>@userPrincipalBuilder.UserPrincipal.FullName</p>
+                    <!-- Status -->
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+            <!-- search form (Optional) -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Pesquisar...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li>
+                    <a href="/">
+                        <i class="fa fa-dashboard"></i> <span>Home</span>
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-male"></i> <span>Empregados</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" data-widget="tree">
+                        @if (userPrincipalBuilder.HasEditorRights())
+                        {
+                            <li><a asp-page="/Empregados/Cadastrar"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+                        }
+
+                        <li><a asp-page="/Empregados/Index"><i class="fa fa-circle-o"></i> Listar</a></li>
+                    </ul>
+                </li>
+
+                @if (false && userPrincipalBuilder.HasAdministratorRights())
+                {
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i> <span>Usuários</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu" data-widget="tree">
+                            <li><a asp-page="/Usuarios/Cadastrar"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+                            <li><a asp-page="/Usuarios/Index"><i class="fa fa-circle-o"></i> Listar</a></li>
+                        </ul>
+                    </li>
+                }
+
+
+
+                @*<li class="header">HEADER</li>*@
+
+
+                @*<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Estabelecimentos</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-link"></i> <span>Multilevel</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#">Link in level 2</a></li>
+                            <li><a href="#">Link in level 2</a></li>
+                        </ul>
+                    </li>*@
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+}
+
+<script type="text/javascript" on-content-loaded="true">
+    $(document).ready(function () {
+        $('.sidebar-menu').tree();
+    });
+
+    var url = window.location;
+
+    // for sidebar menu but not for treeview submenu
+    $('ul.sidebar-menu a').filter(function () {
+        return this.href == url;
+    }).parent().siblings().removeClass('active').end().addClass('active');
+
+    // for treeview which is like a submenu
+    $('ul.treeview-menu a').filter(function () {
+        return this.href == url;
+    }).parentsUntil(".sidebar-menu > .treeview-menu").siblings().removeClass('active menu-open').end().addClass('active menu-open');
+</script>

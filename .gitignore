@@ -10,3 +10,14 @@
 /SESTEC/Gestor.Infrastructure.Dapper/obj/Debug
 /SESTEC/Gestor.Infrastructure.EntityFramework/bin/Debug
 /SESTEC/Gestor.Infrastructure.EntityFramework/obj/Debug
+/Gestor/.vs/Gestor
+/Gestor/Gestor.CoreBusiness.Application/bin/Release/netstandard2.0
+/Gestor/Gestor.CoreBusiness.Application/obj
+/Gestor/Gestor.CoreBusiness.Domain/bin/Release/netstandard2.0
+/Gestor/Gestor.CoreBusiness.Domain/obj
+/Gestor/Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore/bin/Release/netstandard2.0
+/Gestor/Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore/obj
+/Gestor/Gestor.CoreBusiness.WebApi/bin/Release/netcoreapp2.2
+/Gestor/Gestor.CoreBusiness.WebApi/obj
+/Gestor/Gestor.RazorPages/bin/Debug/netcoreapp2.2
+/Gestor/Gestor.RazorPages/obj

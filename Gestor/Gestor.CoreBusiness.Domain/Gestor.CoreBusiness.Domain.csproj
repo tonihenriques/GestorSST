@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="furiza.base.core.domain.br" Version="1.0.6" />
+    <PackageReference Include="furiza.base.core.exceptions" Version="1.0.6" />
+    <PackageReference Include="furiza.base.core.seedwork" Version="1.0.6" />
+    <PackageReference Include="system.componentmodel.annotations" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
+
+</Project>

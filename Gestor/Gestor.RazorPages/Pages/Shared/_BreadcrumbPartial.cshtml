@@ -1,0 +1,34 @@
+﻿<ol class="breadcrumb" style="top: 0px;">
+    @{
+        var homepageLabel = "Home";
+        var url = string.Empty;
+        var parts = new List<string>() { homepageLabel }.Concat(Html.ViewContext.RouteData.Values["page"].ToString().Split('/').Where(s => !string.IsNullOrWhiteSpace(s) && s != "Index"));
+        for (var i = 0; i < parts.Count(); i++)
+        {
+            var part = parts.ElementAt(i);
+            if (i == parts.Count() - 1)
+            {
+                if (part == homepageLabel)
+                {
+                    <li class='active'><i class="fa fa-dashboard"></i> @part</li>
+                }
+                else
+                {
+                    <li class='active'>@part</li>
+                }
+            }
+            else
+            {
+                if (part == homepageLabel)
+                {
+                    <li><a href="/"><i class="fa fa-dashboard"></i> @part</a></li>
+                }
+                else
+                {
+                    url += "/" + parts.ElementAt(i);
+                    <li><a href="@url">@parts.ElementAt(i)</a></li>
+                }
+            }
+        }
+    }
+</ol>
