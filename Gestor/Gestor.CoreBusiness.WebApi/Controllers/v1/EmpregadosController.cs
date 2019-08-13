@@ -5,6 +5,8 @@ using Gestor.CoreBusiness.Domain.Models.EmpregadoAggregate;
 using Gestor.CoreBusiness.Domain.ViewModels;
 using Gestor.CoreBusiness.Domain.ViewModels.EmpregadoViewModels;
 using Gestor.CoreBusiness.WebApi.Exceptions;
+using Gestor.CoreBusiness.WebApi.Queries.Empregado;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,44 +19,47 @@ namespace Gestor.CoreBusiness.WebApi.Controllers.v1
     [ApiVersion("1.0")]
     public class EmpregadosController : RootController
     {
+        private readonly IMediator mediator;
         private readonly IEmpregadoReadOnlyRepository empregadoReadOnlyRepository;
         private readonly IEmpregadoBusiness empregadoBusiness;
 
-        public EmpregadosController(IEmpregadoReadOnlyRepository empregadoReadOnlyRepository,
+        public EmpregadosController(IMediator mediator,
+            IEmpregadoReadOnlyRepository empregadoReadOnlyRepository,
             IEmpregadoBusiness empregadoBusiness)
         {
+            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             this.empregadoReadOnlyRepository = empregadoReadOnlyRepository ?? throw new ArgumentNullException(nameof(empregadoReadOnlyRepository));
             this.empregadoBusiness = empregadoBusiness ?? throw new ArgumentNullException(nameof(empregadoBusiness));
         }
 
-        //[HttpGet]
-        //[ProducesResponseType(typeof(ObterCipasQueryResult), 200)]
-        //[ProducesResponseType(401)]
-        //[ProducesResponseType(typeof(InternalServerError), 500)]
-        //public async Task<IActionResult> GetManyAsync([FromQuery]ObterCipasQuery query)
-        //{
-        //    var queryResult = await mediator.Send(query);
+        [HttpGet]
+        [ProducesResponseType(typeof(ObterEmpregadosQueryResult), 200)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(typeof(InternalServerError), 500)]
+        public async Task<IActionResult> GetManyAsync([FromQuery]ObterEmpregadosQuery query)
+        {
+            var queryResult = await mediator.Send(query);
 
-        //    return Ok(queryResult);
-        //}
+            return Ok(queryResult);
+        }
 
-        //[HttpGet("{id}", Name = "CipasGet")]
-        //[ProducesResponseType(typeof(ObterCipaQueryResult), 200)]
-        //[ProducesResponseType(401)]
-        //[ProducesResponseType(typeof(BadRequestError), 404)]
-        //[ProducesResponseType(typeof(InternalServerError), 500)]
-        //public async Task<IActionResult> GetAsync([FromRoute]Guid id)
-        //{
-        //    var query = new ObterCipaQuery()
-        //    {
-        //        CipaId = id
-        //    };
-        //    var queryResult = await mediator.Send(query);
-        //    if (queryResult == null)
-        //        throw new ResourceNotFoundException(new ResourceNotFoundExceptionItem[] { CoreBusinessResourceNotFoundExceptionItem.Cipa });
+        [HttpGet("{id}", Name = "EmpregadosGet")]
+        [ProducesResponseType(typeof(ObterEmpregadoQueryResult), 200)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(typeof(BadRequestError), 404)]
+        [ProducesResponseType(typeof(InternalServerError), 500)]
+        public async Task<IActionResult> GetAsync([FromRoute]Guid id)
+        {
+            var query = new ObterEmpregadoQuery()
+            {
+                EmpregadoId = id
+            };
+            var queryResult = await mediator.Send(query);
+            if (queryResult == null)
+                throw new ResourceNotFoundException(new ResourceNotFoundExceptionItem[] { CoreBusinessResourceNotFoundExceptionItem.Empregado });
 
-        //    return Ok(queryResult);
-        //}
+            return Ok(queryResult);
+        }
 
         [Authorize(Policy = FurizaPolicies.RequireEditorRights)]
         [HttpPost]

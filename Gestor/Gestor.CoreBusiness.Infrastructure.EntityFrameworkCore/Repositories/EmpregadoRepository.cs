@@ -21,7 +21,7 @@ namespace Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore.Repositories
             if (empregado != null)
             {
                 //coreBusinessContext.Entry(empregado).Collection(i => i.Membros).Load();
-                coreBusinessContext.Entry(empregado).Reference(i => i.Cpf).Load();
+                //coreBusinessContext.Entry(empregado).Reference(i => i.Cpf).Load();
             }
 
             return empregado;
@@ -33,7 +33,7 @@ namespace Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore.Repositories
             if (empregado != null)
             {
                 //await coreBusinessContext.Entry(empregado).Collection(i => i.Membros).LoadAsync();
-                await coreBusinessContext.Entry(empregado).Reference(i => i.Cpf).LoadAsync();
+                //await coreBusinessContext.Entry(empregado).Reference(i => i.Cpf).LoadAsync();
             }
 
             return empregado;
@@ -45,7 +45,7 @@ namespace Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore.Repositories
             if (empregado != null)
             {
                 //await coreBusinessContext.Entry(empregado).Collection(i => i.Membros).LoadAsync();
-                await coreBusinessContext.Entry(empregado).Reference(i => i.Cpf).LoadAsync();
+                //await coreBusinessContext.Entry(empregado).Reference(i => i.Cpf).LoadAsync();
             }
 
             return empregado;
