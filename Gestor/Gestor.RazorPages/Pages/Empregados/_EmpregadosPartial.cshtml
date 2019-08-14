@@ -1,0 +1,58 @@
+﻿@model Gestor.RazorPages.RestClients.CoreBusiness.Empregados.EmpregadosGetManyResult
+
+@if (Model == null || Model.Empregados == null || !Model.Empregados.Any())
+{
+    <partial name="_NenhumaOcorrenciaParaExibicaoPartial" />
+}
+else
+{
+    <div class="box box-widget">
+        <div class="box-body">
+            <table id="tableResult" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nome Completo</th>
+                        <th>CPF</th>
+                        <th class="hidden-xs hidden-sm" style="width: 80px">Matrícula</th>
+                        <th class="hidden-xs hidden-sm" style="width: 80px">Status</th>
+                        <th class="hidden-xs hidden-sm hidden-md" style="width: 125px">Data de Criação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var empregado in Model.Empregados)
+                    {
+                        <tr>
+                            <td><a asp-page="/Empregados/Detalhar" asp-route-id="@empregado.Id">@empregado.Nome</a></td>
+                            <td>@empregado.Cpf.NumeroComMascara</td>
+                            <td class="hidden-xs hidden-sm">@empregado.Matricula</td>                            
+
+                            @{
+                                var corStatusFundo = string.Empty;
+                                var corStatusLetra = string.Empty;
+
+                                if (empregado.Status == RestClients.CoreBusiness.Empregados.StatusEmpregado.Livre)
+                                {
+                                    corStatusFundo = "background-color: #00a65a;"; //TODO: estudar as cores para cada status... aproveitar do GESET ?
+                                    corStatusLetra = "color: #ffffff;";
+                                }
+                                else
+                                {
+                                    corStatusFundo = "background-color: #f39c12;";
+                                    corStatusLetra = "color: #ffffff;";
+                                }
+                            }
+
+                            <td class="hidden-xs hidden-sm" style="vertical-align: middle; text-align: center; @corStatusFundo">
+                                <span style="font-weight: 600; @corStatusLetra">
+                                    @empregado.Status
+                                </span>
+                            </td>
+
+                            <td class="hidden-xs hidden-sm hidden-md">@empregado.CreationDate?.ToLocalTime()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

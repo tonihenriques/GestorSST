@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Furiza.Base.Core.Domain.BR.ValueObjects;
+using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Gestor.CoreBusiness.WebApi.Queries.Empregado
                 {
                     request.Status,
                     request.Quantidade,
-                    request.Cpf,
+                    cpf = new Cpf(request.Cpf).Numero,
                     nome = $"%{request.Nome}%"
                 })
             };

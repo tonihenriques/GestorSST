@@ -21,3 +21,7 @@
 /Gestor/Gestor.CoreBusiness.WebApi/obj
 /Gestor/Gestor.RazorPages/bin/Debug/netcoreapp2.2
 /Gestor/Gestor.RazorPages/obj
+/Gestor/Gestor.CoreBusiness.Application/bin/Debug/netstandard2.0
+/Gestor/Gestor.CoreBusiness.Domain/bin/Debug/netstandard2.0
+/Gestor/Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore/bin/Debug/netstandard2.0
+/Gestor/Gestor.CoreBusiness.WebApi/bin/Debug/netcoreapp2.2

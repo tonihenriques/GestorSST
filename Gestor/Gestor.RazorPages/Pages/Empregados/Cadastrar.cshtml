@@ -1,0 +1,82 @@
+﻿@page
+@model CadastrarModel
+@{
+    ViewData["Title"] = "Empregados > Cadastrar";
+}
+
+<div class="box blockableDiv">
+    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-begin="blockDivForAjaxRequest()" data-ajax-complete="unblockDivForAjaxRequest()" data-ajax-success="handleRedirectInAjaxRequest" data-ajax-failure="handleUserInteractionInAjaxFailure">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosPost.Cpf" type="text" class="form-control" placeholder="CPF">
+                            <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+                            <span asp-validation-for="EmpregadosPost.Cpf" style="font-size: 10px; color: #a94442;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosPost.Nome" type="text" class="form-control" placeholder="Nome Completo (ou parte dele)">
+                            <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                            <span asp-validation-for="EmpregadosPost.Nome" style="font-size: 10px; color: #a94442;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <div class="input-group date">
+                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            <input asp-for="EmpregadosPost.DataNascimento" type="text" class="form-control pull-right datepicker" placeholder="Data de Nascimento">
+                        </div>
+                        <span asp-validation-for="EmpregadosPost.DataNascimento" style="font-size: 10px; color: #a94442;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosPost.Email" type="text" class="form-control" placeholder="Email">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <span asp-validation-for="EmpregadosPost.Email" style="font-size: 10px; color: #a94442;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosPost.Telefone" type="text" class="form-control" placeholder="Telefone">
+                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                            <span asp-validation-for="EmpregadosPost.Telefone" style="font-size: 10px; color: #a94442;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosPost.Matricula" type="text" class="form-control" placeholder="Matrícula">
+                            <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+                            <span asp-validation-for="EmpregadosPost.Matricula" style="font-size: 10px; color: #a94442;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <button class="btn btn-default btn-block" type="submit" data-submit-ajaxform-pace>
+                <i class="fa fa-check"></i>
+                Concluir
+            </button>
+        </div>
+    </form>
+</div>

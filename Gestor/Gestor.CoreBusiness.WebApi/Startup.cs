@@ -1,5 +1,4 @@
 ﻿using Furiza.AspNetCore.WebApi.Configuration;
-using Gestor.CoreBusiness.Infrastructure.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +27,8 @@ namespace Gestor.CoreBusiness.WebApi
         protected override void AddCustomServicesAtTheEnd(IServiceCollection services)
         {
             services.AddGestorCoreBusinessApplication();
-            services.AddGestorCoreBusinessEntityFramework(Configuration.TryGet<CoreBusinessSqlConfiguration>());
+            services.AddGestorCoreBusinessEntityFramework(Configuration.TryGet<Infrastructure.EntityFrameworkCore.CoreBusinessSqlConfiguration>());
+            services.AddGestorCoreBusinessQueries(Configuration.TryGet<Queries.CoreBusinessSqlConfiguration>());
         }
 
         protected override void AddCustomMiddlewaresToTheBeginningOfThePipeline(IApplicationBuilder app)

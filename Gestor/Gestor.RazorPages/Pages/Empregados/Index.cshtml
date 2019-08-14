@@ -1,0 +1,65 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Empregados";
+}
+
+<div class="box blockableDiv" style="margin-bottom: 0px">
+    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-url='@Url.Page(pageName: "", pageHandler: "EmpregadosPartial")' data-ajax-begin="blockDivForAjaxRequest()" data-ajax-complete="unblockDivForAjaxRequest()" data-ajax-success="applyDataTable('tableResult', true, 25)" data-ajax-update="#divResult" data-ajax-failure="handleUserInteractionInAjaxFailure">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosGetMany.Cpf" type="text" class="form-control" placeholder="CPF">
+                            <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group has-feedback">
+                            <input asp-for="EmpregadosGetMany.Nome" type="text" class="form-control" placeholder="Nome Completo (ou parte dele)">
+                            <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <select asp-for="EmpregadosGetMany.Status" asp-items="Html.GetEnumSelectList<Gestor.RazorPages.RestClients.CoreBusiness.Empregados.StatusEmpregado>()" class="form-control select2" data-placeholder="Status"></select>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <div class="form-group">
+                        <button class="btn btn-default btn-block" type="submit" data-submit-ajaxform-pace>
+                            <i class="fa fa-search"></i>
+                            Pesquisar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="divResult"></div>
+
+@section Styles {
+    <link href="~/admin-lte/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/admin-lte/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin-lte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/custom/js/settings-datatable.min.js"></script>
+    <script>
+        $(function () {
+            $("#EmpregadosGetMany_Status").val(0);
+            $("#EmpregadosGetMany_Status").trigger('change');
+            $("[data-submit-ajaxform-pace]").click();
+        });
+    </script>
+}

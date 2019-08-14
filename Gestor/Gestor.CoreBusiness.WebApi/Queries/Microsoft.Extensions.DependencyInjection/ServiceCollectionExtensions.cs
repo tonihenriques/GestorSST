@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Gestor.CoreBusiness.WebApi.Queries;
+using MediatR;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
