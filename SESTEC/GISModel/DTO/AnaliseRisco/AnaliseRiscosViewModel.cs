@@ -54,7 +54,7 @@ namespace GISModel.DTO.AnaliseRisco
 
         public bool BemEstar { get; set; }
 
-        public DateTime DataRealizada { get; set; }
+        public string DataRealizada { get; set; }
 
 
 

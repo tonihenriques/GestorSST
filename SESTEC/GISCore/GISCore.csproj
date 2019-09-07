@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201907211231492_v019.Designer.cs">
       <DependentUpon>201907211231492_v019.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909071633130_v_Data_AR_string.cs" />
+    <Compile Include="Migrations\201909071633130_v_Data_AR_string.Designer.cs">
+      <DependentUpon>201909071633130_v_Data_AR_string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Abstract\IBaseRepository.cs" />
@@ -287,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907211231492_v019.resx">
       <DependentUpon>201907211231492_v019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909071633130_v_Data_AR_string.resx">
+      <DependentUpon>201909071633130_v_Data_AR_string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

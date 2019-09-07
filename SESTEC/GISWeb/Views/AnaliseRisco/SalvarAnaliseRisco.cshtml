@@ -43,6 +43,7 @@
             </div>
         </div>
     </span>
+        
 </div>
 
 
@@ -93,8 +94,10 @@
             <tbody>
                 @foreach (AnaliseRiscosViewModel item in ViewBag.Risco)
                 {
-                    var DateAR = item.DataRealizada.ToShortDateString();
+                    var DateAR = item.DataRealizada;
                     var DateHJ = DateTime.Now.ToString("dd/MM/yyyy");
+
+                   
 
 
                     //if (DateHJ == DateAR)
@@ -281,8 +284,9 @@
                                                     @*<button type="submit" class="btn btn-primary btn-lg btn-block btn-responsive" id="btnSalvar">*@
 
                                                     <i class="ace-icon fa fa-check bigger-55"></i>
-                                                    Salvo
-
+                                                    Salvo em:
+                                                    <br/>
+                                                    @Html.Label(DateAR)
 
                                                 </div>
                                             </div>

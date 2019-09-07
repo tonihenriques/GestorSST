@@ -137,57 +137,112 @@ namespace GISWeb.Controllers
 
             ViewBag.PerigoPotencial = new SelectList(PerigoPotencialBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDPerigoPotencial", "DescricaoEvento");
 
+            //Se tiver realizado a análise de risco no dia então não precisa registrar novamente, 
+            //mas se não fez no dia deverá registrar
 
-            //if(date == DateTime.Now)
-            //{
+            foreach(var AnaliseDiaria in AnaliseRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)))
+            {
+                if(AnaliseDiaria.DataRealizada == Convert.ToString(DateTime.Today))
+                {
+                    var ListaAmbientes = (from AL in AtividadeAlocadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.idAlocacao.Equals(idAlocacao)).ToList()
+                                          join AR in AnaliseRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on AL.IDAtividadeAlocada equals AR.IDAtividadeAlocada
+                                          into ARGroup
+                                          from item in ARGroup.DefaultIfEmpty()
+
+                                          join AE in AtividadesDoEstabelecimentoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on AL.idAtividadesDoEstabelecimento equals AE.IDAtividadesDoEstabelecimento
+                                          into AEGroup
+                                          from item2 in AEGroup.DefaultIfEmpty()
+
+                                          join TR in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on item2.IDAtividadesDoEstabelecimento equals TR.idAtividadesDoEstabelecimento
+                                          into TRGroup
+                                          from item3 in TRGroup.DefaultIfEmpty()
 
 
-            var ListaAmbientes = from AL in AtividadeAlocadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.idAlocacao.Equals(idAlocacao)).ToList()
-                                 join AR in AnaliseRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-                                 on AL.IDAtividadeAlocada equals AR.IDAtividadeAlocada
-                                 into ARGroup
-                                 from item in ARGroup.DefaultIfEmpty()
+                                          select new AnaliseRiscosViewModel
+                                          {
+                                              
+                                              IDTipoDeRisco = item3.IDTipoDeRisco,
+                                              FonteGeradora = item3.FonteGeradora,
+                                              IDAmissao = AL.Alocacao.Admissao.IDAdmissao,
+                                              Imagem = AL.Alocacao.Admissao.Imagem,
+                                              Riscos = item3.EventoPerigoso.Descricao,
+                                              DescricaoAtividade = item2.DescricaoDestaAtividade,
+                                              IDAtividadeAlocada = AL.IDAtividadeAlocada,
+                                              Conhecimento = item?.Conhecimento ?? false,
+                                              BemEstar = item?.BemEstar ?? false,
+                                              PossiveisDanos = item3.PossiveisDanos.DescricaoDanos,
+                                              DataRealizada = item?.DataRealizada ?? "",                                              
+                                              IDAtividadeEstabelecimento = AL.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento,
+                                              imagemEstab = AL.AtividadesDoEstabelecimento.Imagem,
+                                              AlocaAtividade = item == null ? false : true,
 
-
-                                 join AE in AtividadesDoEstabelecimentoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-                                 on AL.idAtividadesDoEstabelecimento equals AE.IDAtividadesDoEstabelecimento
-                                 into AEGroup
-                                 from item2 in AEGroup.DefaultIfEmpty()
-
-                                 join TR in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
-                                 on item2.IDAtividadesDoEstabelecimento equals TR.idAtividadesDoEstabelecimento
-                                 into TRGroup
-                                 from item3 in TRGroup.DefaultIfEmpty()
-
-                                 select new AnaliseRiscosViewModel
-                                 {
-                                     //DescricaoAtividade = item.AtividadeAlocada.AtividadesDoEstabelecimento.DescricaoDestaAtividade,
-                                     //Riscos = item.AtividadeAlocada.AtividadesDoEstabelecimento.EventoPerigoso.Descricao,
-                                     IDTipoDeRisco = item3.IDTipoDeRisco,
-                                     FonteGeradora = item3.FonteGeradora,
-                                     IDAmissao = AL.Alocacao.Admissao.IDAdmissao,
-                                     Imagem = AL.Alocacao.Admissao.Imagem,
-                                     Riscos = item3.EventoPerigoso.Descricao,
-                                     DescricaoAtividade = item2.DescricaoDestaAtividade,
-                                     IDAtividadeAlocada = AL.IDAtividadeAlocada,
-                                     Conhecimento = item?.Conhecimento ?? false,
-                                     BemEstar = item?.BemEstar ?? false,
-                                     PossiveisDanos = item3.PossiveisDanos.DescricaoDanos,
-                                     //DataDaAnalise = item?.DataInclusao??DateTime.Now,
-                                     //IDEventoPerigoso = item?.IDEventoPerigoso ?? null,
-                                     //IDPerigoPotencial=item? .IDPerigoPotencial ?? null,
-                                     //Conhecimento = item?.Conhecimento ?? false,
-                                     //BemEstar = item?.BemEstar ?? false,
-                                     IDAtividadeEstabelecimento = AL.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento,
-                                     imagemEstab = AL.AtividadesDoEstabelecimento.Imagem,
-                                     AlocaAtividade = item == null ? false : true,
-                                    
-                                 };                  
+                                          });
+                                        
 
 
                     List<AnaliseRiscosViewModel> lAtividadesRiscos = ListaAmbientes.ToList();
 
                     ViewBag.Risco = ListaAmbientes.ToList();
+
+
+                }
+                else
+                {
+
+                    var ListaAmbientes = (from AL in AtividadeAlocadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.idAlocacao.Equals(idAlocacao)).ToList()
+                                          join AR in AnaliseRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on AL.IDAtividadeAlocada equals AR.IDAtividadeAlocada
+                                          into ARGroup
+                                          from item in ARGroup.DefaultIfEmpty()
+
+                                          join AE in AtividadesDoEstabelecimentoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on AL.idAtividadesDoEstabelecimento equals AE.IDAtividadesDoEstabelecimento
+                                          into AEGroup
+                                          from item2 in AEGroup.DefaultIfEmpty()
+
+                                          join TR in TipoDeRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
+                                          on item2.IDAtividadesDoEstabelecimento equals TR.idAtividadesDoEstabelecimento
+                                          into TRGroup
+                                          from item3 in TRGroup.DefaultIfEmpty()
+
+                                          select new AnaliseRiscosViewModel
+                                          {
+                                              
+                                              IDTipoDeRisco = item3.IDTipoDeRisco,
+                                              FonteGeradora = item3.FonteGeradora,
+                                              IDAmissao = AL.Alocacao.Admissao.IDAdmissao,
+                                              Imagem = AL.Alocacao.Admissao.Imagem,
+                                              Riscos = item3.EventoPerigoso.Descricao,
+                                              DescricaoAtividade = item2.DescricaoDestaAtividade,
+                                              IDAtividadeAlocada = AL.IDAtividadeAlocada,
+                                              Conhecimento = item?.Conhecimento ?? false,
+                                              BemEstar = item?.BemEstar ?? false,
+                                              PossiveisDanos = item3.PossiveisDanos.DescricaoDanos,
+                                              DataRealizada = item?.DataRealizada ?? "",                                              
+                                              IDAtividadeEstabelecimento = AL.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento,
+                                              imagemEstab = AL.AtividadesDoEstabelecimento.Imagem,
+                                              AlocaAtividade = item == null ? false : true,
+
+
+                                          });
+                                        
+
+
+                    List<AnaliseRiscosViewModel> lAtividadesRiscos = ListaAmbientes.ToList();
+
+                    ViewBag.Risco = ListaAmbientes.ToList();
+
+
+
+
+                }
+            }
+
+
+           
 
             //}
 
@@ -269,7 +324,7 @@ namespace GISWeb.Controllers
                     oAnaliseRisco.Conhecimento = ConhecID;
                     oAnaliseRisco.BemEstar = BemEstarID;
                     oAnaliseRisco.IDAtividadeAlocada = idATivAlocada;
-                    oAnaliseRisco.DataRealizada = DateTime.Now;
+                    oAnaliseRisco.DataRealizada = Convert.ToString(DateTime.Now);
 
                     //oAnaliseRisco.BemEstar = oAnaliseRiscosViewModel.BemEstar;
                     //oAnaliseRisco.Conhecimento = oAnaliseRiscosViewModel.Conhecimento;

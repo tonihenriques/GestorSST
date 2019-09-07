@@ -37,11 +37,15 @@ namespace GISModel.Entidades
 
         public bool BemEstar { get; set; }
 
+        [Display(Name ="Data de Realização")]
+        public string Data_Realizacao  { get; set; }
+
         public virtual AtividadeAlocada AtividadeAlocada { get; set; }
 
         public virtual Alocacao Alocacao { get; set; }
 
-        public DateTime DataRealizada { get; set; }
+        [Display(Name = "Data de Realização")]
+        public string DataRealizada { get; set; }
 
 
 

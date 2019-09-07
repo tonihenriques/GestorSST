@@ -513,3 +513,4 @@ C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Mig
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v017.resources
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v018.resources
 C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v019.resources
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.Migrations.v_Data_AR_string.resources
