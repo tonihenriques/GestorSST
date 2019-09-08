@@ -600,6 +600,7 @@
     <Content Include="Views\EquipeAspectoResposta\Index.cshtml" />
     <Content Include="Views\EquipeAspectoResposta\Novo.cshtml" />
     <Content Include="Views\EquipeAspectoResposta\_Resposta.cshtml" />
+    <Content Include="Views\AnaliseRisco\_Grafico01.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

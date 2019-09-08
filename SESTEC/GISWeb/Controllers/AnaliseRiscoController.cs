@@ -132,17 +132,19 @@ namespace GISWeb.Controllers
 
         public ActionResult SalvarAnaliseRisco(string idEstabelecimento, string idAlocacao)
         {
+            string data = Convert.ToString(DateTime.Today);
 
             ViewBag.EventoPerigoso = new SelectList(EventoPerigosoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDEventoPerigoso", "Descricao");
 
             ViewBag.PerigoPotencial = new SelectList(PerigoPotencialBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList(), "IDPerigoPotencial", "DescricaoEvento");
 
+            ViewBag.idalocacao = idAlocacao;
             //Se tiver realizado a análise de risco no dia então não precisa registrar novamente, 
             //mas se não fez no dia deverá registrar
 
+            #region 
 
-
-            string data = Convert.ToString(DateTime.Today);
+            
 
 
             var ListaAmbientes = (from AL in AtividadeAlocadaBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.idAlocacao.Equals(idAlocacao)).ToList()
@@ -175,23 +177,24 @@ namespace GISWeb.Controllers
                                       Conhecimento = item?.Conhecimento ?? false,
                                       BemEstar = item?.BemEstar ?? false,
                                       PossiveisDanos = item3.PossiveisDanos.DescricaoDanos,
-                                      DataRealizada= item?.DataRealizada ?? "",
-                                     
+                                      DataRealizada = item?.DataRealizada ?? "",
+
                                       IDAtividadeEstabelecimento = AL.AtividadesDoEstabelecimento.IDAtividadesDoEstabelecimento,
                                       imagemEstab = AL.AtividadesDoEstabelecimento.Imagem,
                                       AlocaAtividade = item == null ? false : true,
 
-                                  }) ;
-                                        
+                                  });
 
 
-                    List<AnaliseRiscosViewModel> lAtividadesRiscos = ListaAmbientes.ToList();
 
-                    ViewBag.Risco = ListaAmbientes.ToList();
+            List<AnaliseRiscosViewModel> lAtividadesRiscos = ListaAmbientes.ToList();
+
+            ViewBag.Risco = ListaAmbientes.ToList();
 
 
-              
-           
+            #endregion
+
+            #region
 
             var Emp = from Adm in AdmissaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
                       join Aloc in AlocacaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)).ToList()
@@ -216,41 +219,60 @@ namespace GISWeb.Controllers
                               DataNascimento = Empre.DataNascimento,
 
                           },
-                          
-                          
+
+
 
                       };
 
             ViewBag.Emp = Emp.ToList();
 
+            #endregion
 
-
+            #region
             var ListaEmpregado = from AL in AlocacaoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao) && p.IDAlocacao.Equals(idAlocacao)).ToList()
                                  select new Alocacao()
                                  {
                                      Admissao = new Admissao()
                                      {
-                                       Empregado = new Empregado()
-                                       {
-                                           Nome = AL.Admissao.Empregado.Nome,
-                                       
-                                       },
+                                         Empregado = new Empregado()
+                                         {
+                                             Nome = AL.Admissao.Empregado.Nome,
+
+                                         },
                                          Empresa = new Empresa()
                                          {
                                              NomeFantasia = AL.Admissao.Empresa.NomeFantasia
                                          }
                                      },
 
-                                   Equipe = new Equipe()
-                                   {
-                                       NomeDaEquipe = AL.Equipe.NomeDaEquipe
-                                   },
-                                                             
+                                     Equipe = new Equipe()
+                                     {
+                                         NomeDaEquipe = AL.Equipe.NomeDaEquipe
+                                     },
+
 
 
                                  };
 
             ViewBag.Listaempregado = ListaEmpregado;
+
+            #endregion
+
+
+            // pesquisa criada para carregar o grafico do empregado
+            #region
+
+            List<AnaliseRisco> ListaRisco = AnaliseRiscoBusiness.Consulta.Where(p => string.IsNullOrEmpty(p.UsuarioExclusao)&&(p.IDAlocacao.Equals(idAlocacao) && (p.DataRealizada.Equals(data)))).ToList();
+           
+           var result = ListaRisco.Count();
+           var resultC = ListaRisco.Count(c => c.Conhecimento == true);
+           var resultB = ListaRisco.Count(b => b.BemEstar == true);
+
+            ViewBag.AnaliseTotal = result;
+            ViewBag.Totalconhecimento = resultC;
+            ViewBag.TotalBemEstar = resultB;
+
+            #endregion
 
 
 
@@ -259,7 +281,7 @@ namespace GISWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult SalvarAnaliseRisco(AnaliseRisco oAnaliseRisco, string AtivEstabID, string idATivAlocada, bool ConhecID, bool BemEstarID)
+        public ActionResult SalvarAnaliseRisco(AnaliseRisco oAnaliseRisco, string AtivEstabID, string idATivAlocada,string idalocacao, bool ConhecID, bool BemEstarID)
         {
 
             if (ModelState.IsValid)
@@ -271,6 +293,7 @@ namespace GISWeb.Controllers
                     oAnaliseRisco.Conhecimento = ConhecID;
                     oAnaliseRisco.BemEstar = BemEstarID;
                     oAnaliseRisco.IDAtividadeAlocada = idATivAlocada;
+                    oAnaliseRisco.IDAlocacao = idalocacao;
                     oAnaliseRisco.DataRealizada = Convert.ToString(DateTime.Today);
 
                     //oAnaliseRisco.BemEstar = oAnaliseRiscosViewModel.BemEstar;
