@@ -549,3 +549,6 @@ C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.csproj.CoreCom
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.csproj.CopyComplete
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.dll
 C:\Repos\tonihenriques\GestorSST\SESTEC\GISCore\obj\Debug\GISCore.pdb
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\bin\Debug\Castle.Core.dll
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.Extensions.Factory.dll
+C:\Users\Antonio\Documents\GitHub\GestorSST\SESTEC\GISCore\bin\Debug\Ninject.Extensions.Factory.xml

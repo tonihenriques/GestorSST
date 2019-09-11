@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {}
+    "C:\\Users\\Antonio\\Documents\\GitHub\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {}
   },
   "projects": {
-    "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {
+    "C:\\Users\\Antonio\\Documents\\GitHub\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
+        "projectUniqueName": "C:\\Users\\Antonio\\Documents\\GitHub\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
         "projectName": "Gestor.Mvc",
-        "projectPath": "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
-        "packagesPath": "C:\\Users\\133162\\.nuget\\packages\\",
-        "outputPath": "C:\\Repos\\tonihenriques\\GestorSST\\SESTEC\\Gestor.Mvc\\obj\\",
+        "projectPath": "C:\\Users\\Antonio\\Documents\\GitHub\\GestorSST\\SESTEC\\Gestor.Mvc\\Gestor.Mvc.csproj",
+        "packagesPath": "C:\\Users\\Antonio\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Antonio\\Documents\\GitHub\\GestorSST\\SESTEC\\Gestor.Mvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\133162\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Antonio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
